@@ -1,6 +1,6 @@
 # AI 怀旧服
 
-交互式视觉 demo：2022—2025 年份切换、档案详情、预设聊天示例。
+交互式视觉 demo：2022—2025 连续时间线、顶部年份锚点跳转、随滚动更新的年份高亮、档案详情、预设聊天示例。所有年份始终在同一长页内，事件按日期从早到晚排列。
 
 ## 内容边界
 聊天界面为编辑式重构，回答为预设演示文字，不连接真实模型。手记为原创演示文案，不冒充历史评论。精选节点并非完整年表。
@@ -18,6 +18,8 @@ https://github.com/CompVis/stable-diffusion/blob/main/assets/stable-samples/txt2
 - https://openai.com/index/sora-is-here/
 - https://api-docs.deepseek.com/news/news250120/
 - https://github.com/deepseek-ai/DeepSeek-R1
+- https://www.anthropic.com/news/claude-3-family
+- https://openai.com/index/hello-gpt-4o/
 
 ## 运行
 npm install
