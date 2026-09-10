@@ -36,15 +36,15 @@ export default function Home(){
         observer.unobserve(entry.target);
         if(reducedMotion.matches || entry.target.contains(document.activeElement)) continue;
         const animation=entry.target.animate(
-          [{opacity:0,transform:'translateY(22px)'},{opacity:1,transform:'translateY(0)'}],
-          {duration:650,easing:'cubic-bezier(0.22, 1, 0.36, 1)'}
+          [{opacity:0,transform:'translateX(28px)'},{opacity:1,transform:'translateX(0)'}],
+          {duration:600,easing:'cubic-bezier(0.22, 1, 0.36, 1)'}
         );
         animations.add(animation);
         animation.onfinish=()=>animations.delete(animation);
         animation.oncancel=()=>animations.delete(animation);
       }
     },{threshold:0,rootMargin:'0px 0px -24px 0px'});
-    timeline.querySelectorAll('.era-heading, .event-row, .year-note, .timeline-end').forEach(element=>observer.observe(element));
+    timeline.querySelectorAll('.event-card').forEach(element=>observer.observe(element));
     // Focused controls and reduced-motion preferences always take priority.
     timeline.addEventListener('focusin',stopAnimations);
     reducedMotion.addEventListener('change',stopAnimations);

@@ -8,7 +8,7 @@
 .year-anchors a span{font:14px Arial,sans-serif}
 .year-anchors a:hover{background:#e3e7da}
 .year-anchors a[aria-current=location]{background:#38634c;color:white}
-.continuous-timeline{position:relative;--rail:154px}
+.continuous-timeline{position:relative;--rail:154px;overflow-x:clip}
 .continuous-timeline:before{content:'';position:absolute;top:94px;bottom:120px;left:var(--rail);width:1px;background:#c4cdba}
 .timeline-year{position:relative;scroll-margin-top:calc(var(--timeline-nav-height,74px) + 22px);padding:0 0 28px}
 .timeline-year .era-heading{position:relative;margin:0;padding:45px 0 35px;gap:58px}
