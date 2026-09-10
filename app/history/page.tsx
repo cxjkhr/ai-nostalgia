@@ -1,0 +1,1 @@
+import type {Metadata} from 'next';import HistoryTimeline from '@/components/history-timeline';export const metadata:Metadata={title:'AI 发展史 · AI Museum'};export default function History(){return <HistoryTimeline/>}

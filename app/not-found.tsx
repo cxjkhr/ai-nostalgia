@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function NotFound(){return <main className="museum-main collection-heading"><span className="museum-kicker">404</span><h1>这份档案还未收录。</h1><p>可以回到展厅，继续浏览其他历史节点。</p><Link className="return-button" href="/">返回全部展品 →</Link></main>}
