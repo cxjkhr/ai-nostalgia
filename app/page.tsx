@@ -23,6 +23,33 @@ export default function Home(){
   const [year,setYear]=useState('2022');
   const [opened,setOpened]=useState<TimelineEvent|null>(null);
   const navRef=useRef<HTMLElement>(null);
+  const timelineRef=useRef<HTMLDivElement>(null);
+  useEffect(()=>{
+    const timeline=timelineRef.current;
+    if(!timeline || !('IntersectionObserver' in window)) return;
+    const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+    const animations=new Set<Animation>();
+    const stopAnimations=()=>{animations.forEach(animation=>animation.cancel());animations.clear()};
+    const observer=new IntersectionObserver(entries=>{
+      for(const entry of entries){
+        if(!entry.isIntersecting) continue;
+        observer.unobserve(entry.target);
+        if(reducedMotion.matches || entry.target.contains(document.activeElement)) continue;
+        const animation=entry.target.animate(
+          [{opacity:0,transform:'translateY(22px)'},{opacity:1,transform:'translateY(0)'}],
+          {duration:650,easing:'cubic-bezier(0.22, 1, 0.36, 1)'}
+        );
+        animations.add(animation);
+        animation.onfinish=()=>animations.delete(animation);
+        animation.oncancel=()=>animations.delete(animation);
+      }
+    },{threshold:0,rootMargin:'0px 0px -24px 0px'});
+    timeline.querySelectorAll('.era-heading, .event-row, .year-note, .timeline-end').forEach(element=>observer.observe(element));
+    // Focused controls and reduced-motion preferences always take priority.
+    timeline.addEventListener('focusin',stopAnimations);
+    reducedMotion.addEventListener('change',stopAnimations);
+    return()=>{observer.disconnect();stopAnimations();timeline.removeEventListener('focusin',stopAnimations);reducedMotion.removeEventListener('change',stopAnimations)};
+  },[]);
   useEffect(()=>{
     let frame=0;
     const update=()=>{
@@ -52,7 +79,7 @@ export default function Home(){
     <div className="page-wrap">
       <section className="intro"><div><p className="eyebrow">A SHORT HISTORY OF OUR FUTURE</p><h1>未来，已经有了<span>旧时光。</span></h1><p className="intro-copy">那些刚发生不久，就已经值得怀念的未来。<br/>沿着时间往下走，重逢第一次惊讶的瞬间。</p></div><div className="archive-seal"><span>私人数字档案</span><strong>2022—<br/>ONGOING</strong><span>模型 / 界面 / 共同记忆</span></div></section>
       <nav className="year-bar timeline-nav" ref={navRef} aria-label="按年份跳转"><span className="year-label"><Clock3 size={15}/>时间坐标</span><div className="year-anchors">{eras.map(e=><a key={e.year} href={'#year-'+e.year} aria-current={year===e.year?'location':undefined}>{e.year}<span>↓</span></a>)}</div><span className="continuing">顺着往下看 ↓</span></nav>
-      <div className="continuous-timeline">
+      <div className="continuous-timeline" ref={timelineRef}>
         {eras.map((e,i)=><section id={'year-'+e.year} className="timeline-year" key={e.year} aria-labelledby={'heading-'+e.year}>
           <header className="era-heading"><div className="year-number">{e.year}<span>VOL. 0{i+1}</span></div><div><p className="eyebrow">{e.tag}</p><h2 id={'heading-'+e.year}>{e.title}</h2><p>{e.subtitle}</p></div><div className="item-count">精选节点<br/><b>{String(events.filter(v=>v.year===e.year).length).padStart(2,'0')}</b> 份档案</div></header>
           <ol className="event-list">{events.filter(v=>v.year===e.year).map(event=><li className="event-row" key={event.id}>
