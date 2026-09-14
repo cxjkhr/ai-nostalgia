@@ -1,1 +1,3 @@
-import type {Metadata} from 'next';import HistoryTimeline from '@/components/history-timeline';export const metadata:Metadata={title:'AI 发展史 · AI Museum'};export default function History(){return <HistoryTimeline/>}
+import {redirect} from 'next/navigation';
+// 时间线已并入首页；保留旧路径跳转，避免历史链接 404。
+export default function History(){redirect('/')}
