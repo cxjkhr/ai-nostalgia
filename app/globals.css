@@ -1,6 +1,4 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
 
 .timeline-nav{position:sticky;top:0;z-index:20;background:#f5f3ebf5;backdrop-filter:blur(14px)}
 .year-anchors{display:flex;gap:12px}
