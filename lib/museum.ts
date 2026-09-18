@@ -31,6 +31,7 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/dall-e-2/',
       category: 'images',
       tier: 'minor',
+      visual: 'image',
     },
     {
       id: 'github-copilot-ga',
