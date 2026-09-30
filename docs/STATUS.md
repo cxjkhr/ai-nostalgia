@@ -1,7 +1,7 @@
 # STATUS — 进度与交接
 
 > 本文件记录"当前做到哪、接下来做什么"。每次会话结束前更新；新会话先读这里再干活。
-> 最后更新：2026-09-30 夜（**加页面转场与动效**，在分支 `redesign/era-skins`，待站方本地验收后合并）
+> 最后更新：2026-09-30 夜（改版分支 `redesign/era-skins` 已按站方要求**快进合并到 main**；站方仍需本地跑 `npm run dev` + `npm run lint` 验收）
 
 ## 本轮（2026-09-30 夜 · 转场与动效）
 
@@ -167,15 +167,16 @@
 
 ## 已完成（按提交倒序）
 
-- （分支 `redesign/era-skins`）页面转场与动效，未合并
-- （分支 `redesign/era-skins`）来源链接体检：修 7 条失效链接，chatgpt-100m 配图，未合并
-- （分支 `redesign/era-skins`）三张站方供图入库，修正 chatgpt-1m 文案，未合并
-- （分支 `redesign/era-skins`）2026 补 Muse / Jev / Opus 5.5，未合并
-- （分支 `redesign/era-skins`）2026 换成手绘动画风，未合并
-- （分支 `redesign/era-skins`）五个年份页统一时间线结构与缩略图，未合并
-- （分支 `redesign/era-skins`）2022 页加时间线结构，未合并
-- （分支 `redesign/era-skins`）开屏选服 + 每年独立成页，未合并
-- （分支 `redesign/era-skins`）全站年份皮肤改版，未合并
+- 2026-09-30 `redesign/era-skins` 全部 16 个提交快进合并到 main（站方确认直接合并）
+- （分支 `redesign/era-skins`）页面转场与动效
+- （分支 `redesign/era-skins`）来源链接体检：修 7 条失效链接，chatgpt-100m 配图
+- （分支 `redesign/era-skins`）三张站方供图入库，修正 chatgpt-1m 文案
+- （分支 `redesign/era-skins`）2026 补 Muse / Jev / Opus 5.5
+- （分支 `redesign/era-skins`）2026 换成手绘动画风
+- （分支 `redesign/era-skins`）五个年份页统一时间线结构与缩略图
+- （分支 `redesign/era-skins`）2022 页加时间线结构
+- （分支 `redesign/era-skins`）开屏选服 + 每年独立成页
+- （分支 `redesign/era-skins`）全站年份皮肤改版
 - `974b49e` 展品图三波入库（70 图）+ 图片接线数据化，73/77 展品有视觉
 - `ea1b2da` 评论区系统 + DALL-E 2 拼图 + 翻页栏移位 + 全站宋体
 - `e7afc89` 时间线改为首页，档案扩充到 77 个展品
