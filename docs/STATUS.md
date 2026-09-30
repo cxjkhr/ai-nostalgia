@@ -9,6 +9,7 @@
 - 三张站方供图入库（README「历史图片」第四批已登记）：`chatgpt-1m.png`（Altman 原帖截图）、`meta-muse.jpg`（发布会 Muse 购物功能演示）、`typesafe-jev.jpg`（打孔卡与专利图拼贴）；后两张 PNG 转 JPG 压缩
 - meta-muse、typesafe-jev 两张图的出处已按站方说明补上（分别截自 TechCrunch 9/25 报道、TypeSafe 官方博客），README 与 image.sourceUrl 同步
 - **展品支持视频**：`ExhibitImage` 新增可选 `video`（public/ 里的 mp4），`src` 放视频的一帧当封面；时间线缩略图显示封面 + 「▶ 视频」角标，详情页直接播放（带控件、不自动播放）。已用临时测试视频验证过渲染
+- `chatgpt-100m` 来源链接失效：原路透链接的路径写错了（user-group 应为 user-base），且路透在部分网络下打不开；已换成 Euronews 转载的同一篇路透报道 https://www.euronews.com/next/2023/02/02/openai-chatgpt （已核对：两个月月活破亿、UBS、TikTok 用了九个月）
 - opus-55 已接上站方下载的官方发布短片（@claudeai 原帖），转码为 720p 约 4.7MB（原片 1080p 13MB），封面取 17 秒处「Opus 5.5」字幕帧；全站第一件带视频的展品
 - 无图展品现为 3 个：chatgpt-100m、bard-fail、nvidia-1t（ChatGPT 展品本身用对话框演示，不算缺图）
 

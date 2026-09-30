@@ -280,7 +280,7 @@ export const events: TimelineEvent[] = (
       line: 'TikTok 用了九个月，它只用了两个月。',
       detail:
         'UBS 研报显示 ChatGPT 上线约两个月月活破亿，成为当时史上增长最快的消费级应用。',
-      source: 'https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-group-analyst-note-2023-02-01/',
+      source: 'https://www.euronews.com/next/2023/02/02/openai-chatgpt',
       category: 'models',
       tier: 'major',
     },
