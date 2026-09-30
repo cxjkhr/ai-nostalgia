@@ -4,7 +4,7 @@
 
 ## 项目是什么
 
-「AI Museum · AI 怀旧服」：交互式视觉 demo，收录 2022—2026 年 77 个 AI 标志性事件，按博物馆式信息架构呈现（时间线首页 / 分类展区 / 展品详情 / 预设聊天演示 / 当年评论区）。首页是开屏选服，每个版本（年份）独立成页，按那一年的 AI 界面换皮（2022 研究预览 / 2023 社区频道 / 2024 多模态 / 2025 深度思考 / 2026 手绘动画）。
+「AI Museum · AI 怀旧服」：交互式视觉 demo，收录 2022—2026 年 80 个 AI 标志性事件，按博物馆式信息架构呈现（时间线首页 / 分类展区 / 展品详情 / 预设聊天演示 / 当年评论区）。首页是开屏选服，每个版本（年份）独立成页，按那一年的 AI 界面换皮（2022 研究预览 / 2023 社区频道 / 2024 多模态 / 2025 深度思考 / 2026 手绘动画）。
 
 ## 技术栈（重要：不是标准 Next.js）
 
@@ -28,7 +28,7 @@ npm run format   # oxfmt
 ## 架构与数据流
 
 ```
-lib/museum.ts    全站展品的唯一数据源（events: TimelineEvent[]，约 77 条）
+lib/museum.ts    全站展品的唯一数据源（events: TimelineEvent[]，约 80 条）
 lib/comments.ts  「当年评论区」数据（Record<展品id, MuseumComment[]>）
 app/             路由：/ 开屏选服；/year/[year] 各年份页；/exhibits 全部展品；/exhibits/[slug] 详情；
                  /collections/[category] 六个分类展区；/history 重定向到 /；not-found 兜底

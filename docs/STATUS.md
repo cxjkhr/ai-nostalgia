@@ -1,9 +1,19 @@
 # STATUS — 进度与交接
 
 > 本文件记录"当前做到哪、接下来做什么"。每次会话结束前更新；新会话先读这里再干活。
-> 最后更新：2026-09-30 夜（**2026 皮肤从终端换成手绘动画风**，在分支 `redesign/era-skins`，待站方本地验收后合并）
+> 最后更新：2026-09-30 夜（**2026 补 Muse / Jev / Opus 5.5 三件展品，共 80 件**，在分支 `redesign/era-skins`，待站方本地验收后合并）
 
-## 本轮（2026-09-30 夜 · 2026 换成手绘动画风）
+## 本轮（2026-09-30 夜 · 2026 补三件新展品）
+
+- 站方提出补 9 月爆火的三件，均已查一手来源后录入 `lib/museum.ts`（全站 77 → 80 件）：
+  - `meta-muse` 2026-09-08 Meta Muse（agents / major）——来源 TechCrunch 9/25 增长报道（上线两周约 280 万下载、登顶美国双商店）；Meta 官方公告 https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
+  - `typesafe-jev` 2026-09-15 TypeSafe Jev（models / major）——来源 TypeSafe 官方博客 Introducing System One Models & Jev
+  - `opus-55` 2026-09-22 Claude Opus 5.5（models / minor）——来源 Anthropic 官方发布页（价格各降 20%、典型负载成本约降四成、输出快三成以上）
+- tag / line / detail 文案是 Claude 起草的，站方可按自己的语气改
+- **三件都还没有配图**（本环境下载不了外站图片），分镜格里暂时显示名称；按插图固定流程补图即可
+- README「事件来源」已补三条链接
+
+## 上一轮（2026-09-30 夜 · 2026 换成手绘动画风）
 
 - 站方反馈终端风"看着很累"，参考今年流行的"AI 用代码画动画"风格重做 2026：皮肤名从「现役服」改为「手绘动画」
   - 纸面底 + 淡点阵，限定配色（墨蓝、粉、黄、蓝、绿），粗描边 + 实心投影的剪纸感
@@ -120,6 +130,7 @@
 
 ## 已完成（按提交倒序）
 
+- （分支 `redesign/era-skins`）2026 补 Muse / Jev / Opus 5.5，未合并
 - （分支 `redesign/era-skins`）2026 换成手绘动画风，未合并
 - （分支 `redesign/era-skins`）五个年份页统一时间线结构与缩略图，未合并
 - （分支 `redesign/era-skins`）2022 页加时间线结构，未合并

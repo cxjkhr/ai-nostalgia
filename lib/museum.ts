@@ -1695,6 +1695,45 @@ export const events: TimelineEvent[] = (
         sourceUrl: 'https://m.21jingji.com/article/20260904/herald/4b1de4e859674d1b41efdd1ccbbe4c00_zaker.html',
       },
     },
+    {
+      id: 'meta-muse',
+      year: '2026',
+      date: '2026-09-08',
+      name: 'Meta Muse',
+      tag: '私人管家',
+      line: '关掉 App，它还在替你干活。',
+      detail:
+        'Meta 上线个人 AI 智能体 Muse：接上邮箱、日历等应用，在云端替用户发邮件、订行程，关掉 App 也继续执行；上线两周下载约 280 万，一度登顶美国 App Store 与 Google Play。',
+      source: 'https://techcrunch.com/2026/09/25/meta-is-putting-its-muscle-behind-muse-as-the-ai-app-takes-off/',
+      category: 'agents',
+      tier: 'major',
+    },
+    {
+      id: 'typesafe-jev',
+      year: '2026',
+      date: '2026-09-15',
+      name: 'TypeSafe Jev',
+      tag: '机器专用',
+      line: '不写句子，只给选项和概率。',
+      detail:
+        'TypeSafe 发布"System One"模型 Jev：不生成文字，只从预先定义好的选项里给出带置信度的决定，专供其他程序调用；官方称比主流大模型快百倍、便宜数百倍，发布演示里还让它打了《毁灭战士》。',
+      source: 'https://typesafe.ai/blog/introducing-system-one-models-and-jev',
+      category: 'models',
+      tier: 'major',
+    },
+    {
+      id: 'opus-55',
+      year: '2026',
+      date: '2026-09-22',
+      name: 'Claude Opus 5.5',
+      tag: '降价提速',
+      line: '距 Opus 5 不到两个月，又便宜又快了一截。',
+      detail:
+        'Anthropic 发布 Claude Opus 5.5：输入、输出价格各降 20%，典型工作负载成本约降四成，输出速度比 Opus 5 快三成以上，官方称多项测试超过更大的 Fable。',
+      source: 'https://www.anthropic.com/claude-opus-5-5',
+      category: 'models',
+      tier: 'minor',
+    },
   ] satisfies TimelineEvent[]
 ).sort((a, b) => a.date.localeCompare(b.date));
 

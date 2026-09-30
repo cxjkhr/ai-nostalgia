@@ -1,6 +1,6 @@
 # AI Museum · AI 怀旧服
 
-交互式视觉 demo：2022—2026 连续时间线、顶部年份锚点跳转、随滚动更新的年份高亮、档案详情、预设聊天示例。共收录 77 个标志性节点（2022 至 2026 年 9 月）；每年主展品置顶打头，其余事件按日期排列，重要事件用大卡片、次要事件用紧凑单行分层呈现。
+交互式视觉 demo：2022—2026 连续时间线、顶部年份锚点跳转、随滚动更新的年份高亮、档案详情、预设聊天示例。共收录 80 个标志性节点（2022 至 2026 年 9 月）；每年主展品置顶打头，其余事件按日期排列，重要事件用大卡片、次要事件用紧凑单行分层呈现。
 
 首页是开屏选服，每个版本（年份）独立成页、按那一年的 AI 界面换皮（2022 研究预览 / 2023 社区频道 / 2024 多模态 / 2025 深度思考 / 2026 手绘动画，只取界面气质，不复刻具体产品），博物馆式信息架构：
 - 开屏选服：五个版本并排，每块是那一年界面的缩影，点击进入 /year/2022 等年份页（2022 由 ChatGPT 打头、2026 由 GPT-6 Astra 打头）；年份页顶栏配色跟随当年，页底可换到相邻版本。旧的 /#year-2023 链接会自动跳到对应年份页。
@@ -83,6 +83,9 @@ https://github.com/black-forest-labs/flux
 - https://github.com/deepseek-ai/DeepSeek-R1
 - https://www.anthropic.com/news/claude-3-family
 - https://openai.com/index/hello-gpt-4o/
+- https://techcrunch.com/2026/09/25/meta-is-putting-its-muscle-behind-muse-as-the-ai-app-takes-off/
+- https://typesafe.ai/blog/introducing-system-one-models-and-jev
+- https://www.anthropic.com/claude-opus-5-5
 
 ## 运行
 npm install
