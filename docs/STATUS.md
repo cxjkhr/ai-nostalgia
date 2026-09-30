@@ -3,15 +3,26 @@
 > 本文件记录"当前做到哪、接下来做什么"。每次会话结束前更新；新会话先读这里再干活。
 > 最后更新：2026-09-30 夜（**补三张站方供图，75/80 件有图；修正 chatgpt-1m 文案**，在分支 `redesign/era-skins`，待站方本地验收后合并）
 
-## 本轮（2026-09-30 夜 · 站方供图三张 + 修正百万用户文案）
+## 本轮（2026-09-30 夜 · 来源链接体检）
+
+- 站方反馈两条来源打不开，顺势把 80 条来源 + 图片出处逐条用 WebFetch 打开核对：
+  - **失效已修（改为能打开且内容对得上的链接）**：chatgpt-100m（路透路径写错 → Euronews 转载）、bard-fail（路透路径写错 → CNN 当天报道，detail 同步更正）、lensa（prisma 页 404 → TechCrunch 2022-12-05 报道）、openai-devday（→ new-models-and-developer-products-announced-at-devday）、computer-use（→ 3-5-models-and-computer-use）、chatgpt-search（→ introducing-chatgpt-search）、openai-12days（→ openai.com/12-days/）；README 里引用这些旧链接的地方一并更新
+  - **deepseek-r1 配图**：原标注的 Fortune 链接 404，且 Fortune 该报道配图是 Andreessen 肖像，不是 App Store 实拍——图的真实出处待核，详情页已去掉「原始图片」链接，图注改为"出处待核"
+  - **可访问但工具被拦（403 / 反爬 / JS 渲染），链接本身应无问题**：nobelprize.org、知乎专栏（glm-52）、财联社（nano-banana）、观察者网（deepseek-v4-open）、21 财经（ai-outage）、DeepSeek 文档站新闻页、Polygon（lensa 图）；建议站方在自己网络下点一遍
+  - 其余均已打开核对（标题、日期与展品一致）
+- 另：chatgpt-100m 配上站方截取的路透报道页截图
+
+## 上一轮（2026-09-30 夜 · 站方供图三张 + 修正百万用户文案）
 
 - `chatgpt-1m` 文案修正：原写"Altman 在社交媒体晒出增长曲线"不实，原帖只有一句文字；改为引用原帖「ChatGPT 周三上线，今天用户突破 100 万了！」，来源从维基百科换成原帖 https://x.com/sama/status/1599668808285028353 （已用 Techmeme 2022-12-05 存档核对）
 - 三张站方供图入库（README「历史图片」第四批已登记）：`chatgpt-1m.png`（Altman 原帖截图）、`meta-muse.jpg`（发布会 Muse 购物功能演示）、`typesafe-jev.jpg`（打孔卡与专利图拼贴）；后两张 PNG 转 JPG 压缩
 - meta-muse、typesafe-jev 两张图的出处已按站方说明补上（分别截自 TechCrunch 9/25 报道、TypeSafe 官方博客），README 与 image.sourceUrl 同步
 - **展品支持视频**：`ExhibitImage` 新增可选 `video`（public/ 里的 mp4），`src` 放视频的一帧当封面；时间线缩略图显示封面 + 「▶ 视频」角标，详情页直接播放（带控件、不自动播放）。已用临时测试视频验证过渲染
 - `chatgpt-100m` 来源链接失效：原路透链接的路径写错了（user-group 应为 user-base），且路透在部分网络下打不开；已换成 Euronews 转载的同一篇路透报道 https://www.euronews.com/next/2023/02/02/openai-chatgpt （已核对：两个月月活破亿、UBS、TikTok 用了九个月）
+- `chatgpt-100m` 配上站方截取的路透报道页截图（`chatgpt-100m.jpg`）
+- `bard-fail` 来源同样失效（路透链接路径是错的），换成 CNN 当天报道 https://www.cnn.com/2023/02/08/tech/google-ai-bard-demo-error ；detail 顺带更正：错误出现在谷歌推特上的演示里（不是"首支演示视频"），内容是把第一张系外行星照片归给韦布望远镜，市值蒸发约 1000 亿美元
 - opus-55 已接上站方下载的官方发布短片（@claudeai 原帖），转码为 720p 约 4.7MB（原片 1080p 13MB），封面取 17 秒处「Opus 5.5」字幕帧；全站第一件带视频的展品
-- 无图展品现为 3 个：chatgpt-100m、bard-fail、nvidia-1t（ChatGPT 展品本身用对话框演示，不算缺图）
+- 无图展品现为 2 个：bard-fail、nvidia-1t（ChatGPT 展品本身用对话框演示，不算缺图）
 
 ## 上一轮（2026-09-30 夜 · 2026 补三件新展品）
 
@@ -140,6 +151,7 @@
 
 ## 已完成（按提交倒序）
 
+- （分支 `redesign/era-skins`）来源链接体检：修 7 条失效链接，chatgpt-100m 配图，未合并
 - （分支 `redesign/era-skins`）三张站方供图入库，修正 chatgpt-1m 文案，未合并
 - （分支 `redesign/era-skins`）2026 补 Muse / Jev / Opus 5.5，未合并
 - （分支 `redesign/era-skins`）2026 换成手绘动画风，未合并

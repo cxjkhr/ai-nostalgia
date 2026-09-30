@@ -190,7 +190,7 @@ export const events: TimelineEvent[] = (
       line: '第一次，大家排队让 AI 画自己。',
       detail:
         'Prisma 的 Lensa 掀起 AI 头像风潮，也带来第一批“我上传的照片去了哪”的隐私讨论。',
-      source: 'https://prisma-ai.com/lensa',
+      source: 'https://techcrunch.com/2022/12/05/lensa-ai-app-store-magic-avatars-artists/',
       category: 'images',
       tier: 'minor',
       visual: 'image',
@@ -283,6 +283,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.euronews.com/next/2023/02/02/openai-chatgpt',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/chatgpt-100m.jpg',
+        width: 1096,
+        height: 783,
+        alt: '路透社报道《ChatGPT sets record for fastest-growing user base》标题与 Sam Altman 的配图',
+        note: '路透报道页截图 · 2023-02-01（配图版权：Thomson Reuters）',
+        sourceUrl: 'https://finance.yahoo.com/news/chatgpt-sets-record-fastest-growing-190911828.html',
+      },
     },
     {
       id: 'new-bing',
@@ -315,8 +324,8 @@ export const events: TimelineEvent[] = (
       tag: '幻觉示众',
       line: '一张宣传图里的天文错误，蒸发了千亿市值。',
       detail:
-        '谷歌 Bard 首支演示视频中出现事实错误，股价应声大跌；大众第一次直观看到“AI 会一本正经地胡说”。',
-      source: 'https://www.reuters.com/technology/alphabet-shares-slide-after-google-ai-chatbots-error-first-demo-2023-02-08/',
+        '谷歌在推特发布的 Bard 演示里，它把“第一张系外行星照片”错安到韦布望远镜头上，Alphabet 市值一天蒸发约 1000 亿美元；大众第一次直观看到“AI 会一本正经地胡说”。',
+      source: 'https://www.cnn.com/2023/02/08/tech/google-ai-bard-demo-error',
       category: 'models',
       tier: 'major',
     },
@@ -562,7 +571,7 @@ export const events: TimelineEvent[] = (
       line: 'GPTs、GPT-4 Turbo，还有“版权盾”。',
       detail:
         'OpenAI 首届开发者大会发布 GPT-4 Turbo 与自定义 GPTs，个人版 AI 应用生态初现雏形。',
-      source: 'https://openai.com/index/openai-devday/',
+      source: 'https://openai.com/index/new-models-and-developer-products-announced-at-devday/',
       category: 'models',
       tier: 'minor',
       visual: 'image',
@@ -572,7 +581,7 @@ export const events: TimelineEvent[] = (
         height: 1925,
         alt: 'OpenAI DevDay 2023 立方舞台主题演讲照片',
         note: 'DevDay 立方舞台 · 报道实拍',
-        sourceUrl: 'https://openai.com/index/openai-devday/',
+        sourceUrl: 'https://openai.com/index/new-models-and-developer-products-announced-at-devday/',
       },
     },
     {
@@ -1028,7 +1037,7 @@ export const events: TimelineEvent[] = (
       line: '模型第一次公开演示“操作你的电脑”。',
       detail:
         'Anthropic 开放 computer use：模型可以看屏幕、点按钮、填表格，智能体的边界再次外扩。',
-      source: 'https://www.anthropic.com/news/3-5-models-upgrade',
+      source: 'https://www.anthropic.com/news/3-5-models-and-computer-use',
       category: 'agents',
       tier: 'minor',
       visual: 'image',
@@ -1050,7 +1059,7 @@ export const events: TimelineEvent[] = (
       line: '聊天框开始抢搜索引擎的饭碗。',
       detail:
         'ChatGPT 内置网页搜索，“问 AI 还是搜网页”的选择题第一次摆上桌面。',
-      source: 'https://openai.com/index/chatgpt-search/',
+      source: 'https://openai.com/index/introducing-chatgpt-search/',
       category: 'agents',
       tier: 'minor',
       visual: 'image',
@@ -1060,7 +1069,7 @@ export const events: TimelineEvent[] = (
         height: 875,
         alt: 'ChatGPT Search 界面截图：带来源侧栏的搜索回答',
         note: '搜索界面实录 · 报道截图',
-        sourceUrl: 'https://openai.com/index/chatgpt-search/',
+        sourceUrl: 'https://openai.com/index/introducing-chatgpt-search/',
       },
     },
     {
@@ -1072,7 +1081,7 @@ export const events: TimelineEvent[] = (
       line: '连续十二个工作日，每天一个新东西。',
       detail:
         'OpenAI 以“12 Days of Shipmas”连续发布 o1 正式版、Canvas、Sora 正式版等，发布会通胀时代来临。',
-      source: 'https://openai.com/index/12-days-of-openai/',
+      source: 'https://openai.com/12-days/',
       category: 'models',
       tier: 'minor',
       visual: 'image',
@@ -1082,7 +1091,7 @@ export const events: TimelineEvent[] = (
         height: 1080,
         alt: 'OpenAI 标志编辑插画',
         note: 'OpenAI · 报道编辑插画',
-        sourceUrl: 'https://openai.com/index/12-days-of-openai/',
+        sourceUrl: 'https://openai.com/12-days/',
       },
     },
     {
@@ -1147,8 +1156,7 @@ export const events: TimelineEvent[] = (
         width: 1400,
         height: 928,
         alt: '手机屏幕上的 DeepSeek 应用登顶 App Store 免费榜',
-        note: '登顶美区 App Store · Fortune 报道实拍',
-        sourceUrl: 'https://fortune.com/2025/01/27/marc-andreessen-deepseek-ai-sputnik-moment/',
+        note: '登顶美区 App Store · 手机实拍（出处待核）',
       },
     },
     {

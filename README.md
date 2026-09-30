@@ -38,6 +38,7 @@ public/ghibli.jpg 为 GPT-4o 生成的吉卜力风格特朗普肖像（2025-03-2
 https://commons.wikimedia.org/wiki/File:GPT-4o_Studio_Ghibli_portrait_of_Donald_Trump.png
 public/deepseek-r1.jpg 为 DeepSeek 登顶美区 App Store 免费榜的手机实拍，图片检索标注来源为 Fortune 报道（2025-01-27）；经 1400px 缩放，验收时请留意：
 https://fortune.com/2025/01/27/marc-andreessen-deepseek-ai-sputnik-moment/
+（2026-09-30 复核：上述 Fortune 链接已 404；Fortune 该报道的配图是 Andreessen 肖像而非 App Store 实拍，此图真实出处待核，详情页已去掉「原始图片」链接）
 
 —— 以下为 2026-09-18 第二批收录 ——
 public/ernie-bot.jpg 为文心一言把成语「车水马龙」按字面生成的画面（2023 年初广泛流传的名场面），Commons 上传者标注为公有领域（可能由文心一言或 Stable Diffusion 生成）：
@@ -102,7 +103,7 @@ public/runway-gen2.png 为「runway-gen2」展品配图：官方品牌卡。来�
 public/autogpt.png 为「autogpt」展品配图：官方仓库卡。来源：https://github.com/Significant-Gravitas/AutoGPT
 public/xai-grok-1.jpg 为「xai-grok-1」展品配图：官方品牌图。来源：https://x.ai
 public/mistral-7b.jpg 为「mistral-7b」展品配图：官方配图。来源：https://mistral.ai/news/announcing-mistral-7b
-public/openai-devday.jpg 为「openai-devday」展品配图：报道配图（Business Insider，经图片检索）。来源：https://openai.com/index/openai-devday/
+public/openai-devday.jpg 为「openai-devday」展品配图：报道配图（Business Insider，经图片检索）。来源：https://openai.com/index/new-models-and-developer-products-announced-at-devday/
 public/mixtral.jpg 为「mixtral」展品配图：官方配图。来源：https://mistral.ai/news/mixtral-of-experts
 public/gemini-15.png 为「gemini-15」展品配图：官方视觉图。来源：https://deepmind.google/models/gemini/
 public/devin.jpg 为「devin」展品配图：官方配图。来源：https://cognition.com/blog/introducing-devin
@@ -117,8 +118,8 @@ public/notebooklm.png 为「notebooklm」展品配图：官方主视觉。来源
 public/o1-preview.png 为「o1-preview」展品配图：官方 og 图。来源：https://openai.com/index/introducing-openai-o1-preview/
 public/qwen-25.svg 为「qwen-25」展品配图：Commons（CC0）标志。来源：https://commons.wikimedia.org/wiki/File:Qwen_logo.svg
 public/computer-use.png 为「computer-use」展品配图：官方仓库卡。来源：https://github.com/anthropics/anthropic-quickstarts
-public/chatgpt-search.jpg 为「chatgpt-search」展品配图：报道配图（SE Ranking，经图片检索）。来源：https://openai.com/index/chatgpt-search/
-public/openai-12days.jpg 为「openai-12days」展品配图：报道插画（TechCrunch，经图片检索）。来源：https://openai.com/index/12-days-of-openai/
+public/chatgpt-search.jpg 为「chatgpt-search」展品配图：报道配图（SE Ranking，经图片检索）。来源：https://openai.com/index/introducing-chatgpt-search/
+public/openai-12days.jpg 为「openai-12days」展品配图：报道插画（TechCrunch，经图片检索）。来源：https://openai.com/12-days/
 public/sora-turbo.jpg 为「sora-turbo」展品配图：官方 og 图。来源：https://openai.com/index/sora-is-here/
 public/deepseek-v3.png 为「deepseek-v3」展品配图：官方仓库卡。来源：https://github.com/deepseek-ai/DeepSeek-V3
 public/manus.png 为「manus」展品配图：官方横幅图。来源：https://manus.im
@@ -145,3 +146,4 @@ public/meta-muse.jpg 为「meta-muse」展品配图：Meta 发布会上 Muse 购
 public/typesafe-jev.jpg 为「typesafe-jev」展品配图：打孔卡与专利图拼贴插画，站方截自 TypeSafe 官方发布博客（PNG 转 JPG 收录）：https://typesafe.ai/blog/introducing-system-one-models-and-jev
 public/opus-55.mp4 为「opus-55」展品视频：Claude 官方账号在 X 发布的 Opus 5.5 发布短片（20 秒），站方下载供片，收录时转码为 1280×720、H.264 + AAC（约 4.7MB）。原帖：https://x.com/claudeai/status/2102435511222890900
 public/opus-55.jpg 为上述短片的封面帧，取自 17 秒处的「Opus 5.5」字幕画面。
+public/chatgpt-100m.jpg 为「chatgpt-100m」展品配图：路透社 2023-02-01 报道《ChatGPT sets record for fastest-growing user base - analyst note》标题与配图的截图，站方截取（PNG 转 JPG 收录，配图版权 Thomson Reuters）。转载页：https://finance.yahoo.com/news/chatgpt-sets-record-fastest-growing-190911828.html
