@@ -33,15 +33,15 @@ function marks(list:TimelineEvent[],width:number){
 
 export function YearRuler({list,anchor,width=900}:{list:TimelineEvent[];anchor?:TimelineEvent;width?:number}){
   const m=marks(list,width),n=Math.max(0,...m.map(k=>k.lane))+1;
-  return <div className="yr" style={{'--lanes':n} as React.CSSProperties}>
-    {m.map(({e,x,lane,edge})=><a key={e.id} href={'#'+anchorId(e)} aria-label={e.name+' · '+monthDay(e.date)} data-spy={anchorId(e)} className={'yr-dot'+(lane>=0?' major':'')+(edge?' '+edge:'')+(e.id===anchor?.id?' anchor':'')} style={{left:x+'%','--lane':Math.max(lane,0)} as React.CSSProperties}><i aria-hidden="true"/><b>{e.name}<small>{monthDay(e.date)}</small></b></a>)}
+  return <div className="yr" data-ent="ruler" style={{'--lanes':n} as React.CSSProperties}>
+    {m.map(({e,x,lane,edge})=><a key={e.id} href={'#'+anchorId(e)} aria-label={e.name+' · '+monthDay(e.date)} data-spy={anchorId(e)} className={'yr-dot'+(lane>=0?' major':'')+(edge?' '+edge:'')+(e.id===anchor?.id?' anchor':'')} style={{left:x+'%','--x':Math.round(x),'--lane':Math.max(lane,0)} as React.CSSProperties}><i aria-hidden="true"/><b>{e.name}<small>{monthDay(e.date)}</small></b></a>)}
     <div className="yr-track" aria-hidden="true">{Array.from({length:12},(_,i)=><span key={i}>{i+1}月</span>)}</div>
   </div>;
 }
 
 // "怎么看这一页"：先说这一年的界面长什么样，再说怎么读。
 export function YearHow({era,unit,anchor,className='yr-how'}:{era:Era;unit:string;anchor?:TimelineEvent;className?:string}){
-  return <p className={className}>这一页是 {era.year} 年的样子：{unit}按时间从上往下排，上面刻度里大一点的点是重要节点{anchor&&<>，最重要的是 <a href={'#'+anchorId(anchor)}>{anchor.name}（{monthDay(anchor.date)}）</a></>}。点图片或「查看展品」进入详情。</p>;
+  return <p className={className} data-ent="how">这一页是 {era.year} 年的样子：{unit}按时间从上往下排，上面刻度里大一点的点是重要节点{anchor&&<>，最重要的是 <a href={'#'+anchorId(anchor)}>{anchor.name}（{monthDay(anchor.date)}）</a></>}。点图片或「查看展品」进入详情。</p>;
 }
 
 // 可点的缩略图：点图和点"查看展品"一样进详情页；没有可考原图的展品不放。

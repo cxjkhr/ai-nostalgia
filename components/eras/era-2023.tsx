@@ -9,14 +9,14 @@ const channel:Record<CategoryId,string>={models:'对话',images:'作图',video:'
 const slash=(d:string)=>d.replaceAll('-','/');
 
 function Message({e,anchor}:{e:TimelineEvent;anchor:boolean}){
-  if(e.tier==='minor')return <article className="s23-msg compact" id={anchorId(e)}>
+  if(e.tier==='minor')return <article className="s23-msg compact flow-wait" id={anchorId(e)}>
     <time dateTime={e.date}>{e.date.slice(5).replace('-','/')}</time>
     <div className="s23-compact-body">
       <p><a href={exhibitHref(e)}>{e.name}</a> —— {e.line}<span className="s23-ch">#{channel[e.category]}</span><a className="s23-more" href={exhibitHref(e)}>查看展品 →</a></p>
       <Thumb e={e} className="s23-attach"/>
     </div>
   </article>;
-  return <article className={'s23-msg'+(anchor?' pinned':'')} id={anchorId(e)}>
+  return <article className={'s23-msg flow-wait'+(anchor?' pinned':'')} id={anchorId(e)}>
     <span className="s23-av" aria-hidden="true">档</span>
     <div className="s23-body">
       <div className="s23-meta"><strong>档案馆</strong><span className="s23-bot">机器人</span><time dateTime={e.date}>{slash(e.date)}</time>{anchor&&<span className="s23-star">📌 本年主展品</span>}</div>
@@ -53,13 +53,13 @@ export default function Era2023({era,events}:EraProps){
       <div className="s23-feed">
         <div className="s23-welcome">
           <span aria-hidden="true">#</span>
-          <p className="s23-welcome-title">欢迎来到 #{era.year}-大事记</p>
-          <p className="s23-welcome-sub">{era.title}</p>
+          <p className="s23-welcome-title" data-ent="title">欢迎来到 #{era.year}-大事记</p>
+          <p className="s23-welcome-sub" data-ent="sub">{era.title}</p>
           <YearRuler list={list} anchor={anchor}/>
           <YearHow era={era} unit="AI 的新闻都在社区频道里刷屏，档案馆机器人把这一年的事一条条发出来，" anchor={anchor} className="yr-how s23-how"/>
         </div>
         {list.map((e,i)=><Fragment key={e.id}>
-          {isNewMonth(list,i)&&<p className="s23-divider"><span>{era.year} 年 {monthOf(e.date)} 月</span></p>}
+          {isNewMonth(list,i)&&<p className="s23-divider flow-wait"><span>{era.year} 年 {monthOf(e.date)} 月</span></p>}
           <Message e={e} anchor={e.id===anchor?.id}/>
         </Fragment>)}
       </div>

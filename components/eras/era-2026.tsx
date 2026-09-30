@@ -27,7 +27,7 @@ function Doodle(){
 }
 
 function Panel({e,no,scene,anchor}:{e:TimelineEvent;no:number;scene:number;anchor:boolean}){
-  return <li id={anchorId(e)} className={'s26-panel'+(e.tier==='major'?' major':'')+(anchor?' anchor':'')+(e.incident?' incident':'')}>
+  return <li id={anchorId(e)} className={'s26-panel flow-wait'+(e.tier==='major'?' major':'')+(anchor?' anchor':'')+(e.incident?' incident':'')}>
     <span className="s26-outline" aria-hidden="true"/>
     <a className="s26-frame" href={exhibitHref(e)} aria-label={'查看展品：'+e.name}>
       {e.visual==='image'&&e.image?<ExhibitImg event={e}/>:<span className="s26-blank">{e.name}</span>}
@@ -51,9 +51,9 @@ export default function Era2026({era,events}:EraProps){
     <div className="s26-book">
       <header className="s26-cover">
         <div className="s26-cover-text">
-          <p className="s26-kicker">分镜本 · {era.year} · {list.length} 格</p>
-          <p className="s26-title">{era.title}<svg className="s26-scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 12 C60 4 110 18 160 10 S250 6 296 12"/></svg></p>
-          <p className="s26-sub">{era.subtitle}</p>
+          <p className="s26-kicker" data-ent="kicker">分镜本 · {era.year} · {list.length} 格</p>
+          <p className="s26-title" data-ent="title">{era.title}<svg className="s26-scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 12 C60 4 110 18 160 10 S250 6 296 12"/></svg></p>
+          <p className="s26-sub" data-ent="sub">{era.subtitle}</p>
         </div>
         <Doodle/>
       </header>

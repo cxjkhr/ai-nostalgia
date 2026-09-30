@@ -39,10 +39,35 @@ html:active-view-transition-type(detail)::view-transition-new(root){animation:vt
 @keyframes vt-sink{to{opacity:.35;transform:scale(.96)}}
 @keyframes vt-rise{from{opacity:0;transform:translateY(24px)}}
 
-/* ── 页面内：展品随滚动浮现（滚动驱动，已在视口里的直接完整显示）；详情页依次入场 ── */
+/* ── 页面内：列表卡片随滚动浮现（滚动驱动，已在视口里的直接完整显示）；年份页的条目走下面的入场编排；详情页依次入场 ── */
 @keyframes rise-in{from{opacity:0;transform:translateY(22px)}}
 @supports (animation-timeline:view()){
-  .s22-turn,.s23-msg,.s24-card,.s24-month,.s25-turn,.s26-panel,.xcard,.handoff>a{animation:rise-in linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  .xcard,.handoff>a{animation:rise-in linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+}
+
+/* ── 年份页入场：进了年份页不一次亮全页——标题先起，全年刻度从左往右划入（圆点按 --x 在
+   全年中的位置依次弹出），说明跟上；展品条目的流动展开见下面的 .flow-wait/.flow-in
+   （SSR 就带 flow-wait，lib/era-flow.ts 的内联脚本分批放行，无 JS 由 noscript 兜底）。
+   纯 CSS、从首帧起算，直接打开或跳转进来都成立 ── */
+@keyframes ent-rise{from{opacity:0;transform:translateY(16px)}}
+@keyframes ent-fade{from{opacity:0}}
+@keyframes ent-pop{from{transform:scale(0)}}
+@keyframes ent-track{from{clip-path:inset(0 100% 0 0)}}
+.year-page [data-ent='kicker']{animation:ent-rise .5s var(--ease-out) .08s both}
+.year-page [data-ent='title']{animation:ent-rise .6s var(--ease-out) .2s both}
+.year-page [data-ent='sub']{animation:ent-rise .6s var(--ease-out) .38s both}
+.year-page [data-ent='ruler']{animation:ent-rise .55s var(--ease-out) .52s both}
+.year-page [data-ent='how']{animation:ent-rise .6s var(--ease-out) .74s both}
+.year-page .yr-track{animation:ent-track .65s var(--ease-out) .6s both}
+.year-page .yr-track span{animation:ent-fade .4s ease-in 1.05s both}
+.year-page .yr-dot i{animation:ent-pop .45s var(--ease-out) calc(.6s + var(--x,0)*7ms) both}
+.year-page .yr-dot b{animation:ent-fade .45s ease calc(.72s + var(--x,0)*7ms) both}
+.year-page .s26-scribble path{animation-delay:.8s}
+.year-page .flow-wait{opacity:0;transform:translateY(20px)}
+.year-page .flow-in{opacity:1;transform:none;transition:opacity .55s var(--ease-out),transform .6s var(--ease-out)}
+@media (prefers-reduced-motion: reduce){
+  .year-page [data-ent],.year-page .yr-track,.year-page .yr-track span,.year-page .yr-dot i,.year-page .yr-dot b{animation:none}
+  .year-page .flow-wait,.year-page .flow-in{opacity:1;transform:none;transition:none}
 }
 .dx-head,.dx-q,.dx-a-body>*,.dx-pager,.dx-comments{animation:rise-in .6s var(--ease-out) both}
 .dx-q{animation-delay:.08s}

@@ -30,12 +30,12 @@ function Stamp({from,to}:{from:string;to?:string}){
 export default function Era2025({era,events}:EraProps){
   const {list,anchor}=chronological(events);
   return <div className="skin s2025"><ScrollSpy links=".s2025 [data-spy]"/><div className="s25-col">
-    <div className="s25-greet"><span className="s25-mark" aria-hidden="true"/><p className="s25-title">{era.title}</p><p>{era.subtitle}</p>
+    <div className="s25-greet"><span className="s25-mark" aria-hidden="true"/><p className="s25-title" data-ent="title">{era.title}</p><p data-ent="sub">{era.subtitle}</p>
       <YearRuler list={list} anchor={anchor} width={770}/>
       <YearHow era={era} unit="AI 学会了先想再答，每一轮问答是一件重要的事，零碎的新闻收在待办清单里，" anchor={anchor} className="yr-how s25-how"/>
     </div>
     {toBlocks(list).map((b,i)=>b.kind==='major'
-      ?<div className={'s25-turn'+(b.e.id===anchor?.id?' anchor':'')} key={b.e.id} id={anchorId(b.e)}>
+      ?<div className={'s25-turn flow-wait'+(b.e.id===anchor?.id?' anchor':'')} key={b.e.id} id={anchorId(b.e)}>
         <Stamp from={b.e.date}/>
         <p className="s25-user">{b.e.name}</p>
         <div className="s25-ai">
@@ -48,7 +48,7 @@ export default function Era2025({era,events}:EraProps){
           <p className="s25-actions"><a href={exhibitHref(b.e)}>查看展品 →</a><a href={b.e.source} target="_blank" rel="noreferrer">来源 ↗</a></p>
         </div>
       </div>
-      :<div className="s25-turn" key={'t'+i}>
+      :<div className="s25-turn flow-wait" key={'t'+i}>
         <Stamp from={b.list[0].date} to={b.list[b.list.length-1].date}/>
         <p className="s25-user">这段时间还发生了什么？</p>
         <div className="s25-ai"><div className="s25-tasks">
