@@ -1,8 +1,8 @@
 import ChatWindow from '@/components/chat-window';
 import {type TimelineEvent} from '@/lib/museum';
+import {ExhibitImg} from '@/components/eras/shared';
 export default function ExhibitVisual({event,expanded=false}:{event:TimelineEvent;expanded?:boolean}){
- if(event.visual==='image'&&event.image)return <img className="museum-original-image" src={event.image.src} alt={event.image.alt} width={event.image.width} height={event.image.height}/>;
+ if(event.visual==='image'&&event.image)return <ExhibitImg event={event}/>;
  if(event.visual==='chat')return <ChatWindow expanded={expanded}/>;
- return <div className={'archive-plate plate-'+event.id}><span>AI MUSEUM / {event.year}</span><strong>{event.name}</strong><p>{event.line}</p><small>{event.tag} · 编辑式档案展示</small></div>;
+ return <div className="exhibit-plate"><span>{event.year} · 档案</span><strong>{event.name}</strong><small>暂无可考的原始图片</small></div>;
 }
-

@@ -13,6 +13,8 @@ export type TimelineEvent = {
   tier: 'major' | 'minor';
   visual?: 'chat' | 'image';
   image?: ExhibitImage;
+  // 事故类事件：2026 终端界面里按故障（INCIDENT）标红显示。
+  incident?: boolean;
 };
 
 // 展品配图：visual:'image' 时必填；文件放 public/，来源与下载日期须在 README「历史图片」登记。
@@ -1676,6 +1678,7 @@ export const events: TimelineEvent[] = (
       date: '2026-09-03',
       name: '黑色星期四大宕机',
       tag: '基建现形',
+      incident: true,
       line: 'ChatGPT、Claude、Grok，同一个下午一起挂了。',
       detail:
         '北美时间周四下午，三家头部 AI 服务同时中断约三小时四十分钟，约 3.7 万份故障报告，Cursor 等下游产品连带受累；AI 基础设施的脆弱性第一次大规模现形。',

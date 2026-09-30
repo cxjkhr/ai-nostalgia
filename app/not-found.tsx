@@ -1,1 +1,1 @@
-export default function NotFound(){return <main className="museum-main collection-heading"><span className="museum-kicker">404</span><h1>这份档案还未收录。</h1><p>可以回到时间线，继续浏览其他历史节点。</p><a className="return-button" href="/">回到时间线 →</a></main>}
+export default function NotFound(){return <main className="shell-main not-found"><span className="shell-kicker">404</span><h1>这份档案还未收录。</h1><p>可以回到时间线，继续浏览其他历史节点。</p><a className="return-button" href="/">回到时间线 →</a></main>}
