@@ -8,6 +8,8 @@ import {skinOf,skinInfo,type Skin} from '@/components/eras/shared';
 import {thinking} from '@/components/eras/era-2025';
 import VersionBar from '@/components/version-bar';
 import MuseumFooter from '@/components/museum-footer';
+import ExhibitShowcase from '@/components/exhibit-showcase';
+import {showcases} from '@/lib/showcase';
 export function generateStaticParams(){return events.map(e=>({slug:e.id}))}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const event=events.find(e=>e.id===slug);return {title:event?event.name+' · AI 怀旧服':'展品未找到 · AI 怀旧服',description:event?.detail}}
 // 详情页按展品所属年份换皮：提问的样子跟着那一年的界面走。
@@ -26,6 +28,7 @@ export default async function Exhibit({params}:{params:Promise<{slug:string}>}){
   {skin==='2025'&&<details className="s25-think" open><summary>已思考片刻</summary><p>{thinking(event)}</p></details>}
   <p className="dx-lead">{event.line}</p><p className="dx-detail">{event.detail}</p>
   <figure className="dx-figure"><div className="dx-media"><ExhibitVisual key={event.id} event={event} expanded/></div><figcaption>{event.image?.note??(event.visual==='chat'?'界面意象重构 · 预设演示对话，非历史原始记录':'暂无可考的原始图片 · 文字档案')}</figcaption></figure>
+  {showcases[event.id]?.length?<ExhibitShowcase works={showcases[event.id]}/>:null}
   <p className="dx-sources"><span>资料来源</span><a href={event.source} target="_blank" rel="noreferrer">原始发布资料 ↗</a>{event.image?.sourceUrl&&<a href={event.image.sourceUrl} target="_blank" rel="noreferrer">原始图片 ↗</a>}<a href={back}>回到 {event.year} 年的界面 →</a></p>
  </div></div>
  <nav className="dx-pager" aria-label="按时间浏览相邻展品">{previous?<a rel="prev" href={'/exhibits/'+previous.id}><span>← Previous</span><strong>{previous.name}</strong></a>:<div className="dx-edge"><span>START OF THE COLLECTION</span><strong>这是第一件展品</strong></div>}<p className="dx-count">{index+1} / {events.length}<small>按时间顺序</small></p>{next?<a rel="next" href={'/exhibits/'+next.id}><span>Next →</span><strong>{next.name}</strong></a>:<a href="/exhibits"><span>已到最后一件</span><strong>返回全部展品 →</strong></a>}</nav>

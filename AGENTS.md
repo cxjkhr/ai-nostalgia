@@ -30,6 +30,8 @@ npm run format   # oxfmt
 ```
 lib/museum.ts    全站展品的唯一数据源（events: TimelineEvent[]，约 80 条）
 lib/comments.ts  「当年评论区」数据（Record<展品id, MuseumComment[]>）
+lib/showcase.ts  详情页展品作品（image / video / audio / interactive），来源和年代逐项留证
+lib/image-thumbnails.json 列表缩略图映射；原图保留，新图无映射时回退原图
 lib/transitions.ts 页面转场脚本（head 内联，配合 globals.css 里的 View Transitions 样式）
 app/             路由：/ 开屏选服；/year/[year] 各年份页；/exhibits 全部展品；/exhibits/[slug] 详情；
                  /collections/[category] 六个分类展区；/history 重定向到 /；not-found 兜底
@@ -54,6 +56,7 @@ public/          静态资源（图片需登记来源，见下）
 - **不虚构评论**：comments 只收录真实公开社区的留言，匿名化后使用；化名由组件按楼层自动分配 Alice/Bob/Carol（深度优先），数据里 name 留空
 - 聊天界面是编辑式重构的预设演示文字，**不连接真实模型**，也不要引入真实模型调用
 - 图片需在 README「历史图片」一节登记来源与下载日期；未断言 checkpoint / 提示词
+- 展品展示收录流程见 `docs/SHOWCASE.md`。馆主作品、历史复现和发布期原作明确区分；交互 iframe 只允许脚本，禁止 same-origin；不把现代生成物冒充历史原作。
 
 ## 代码风格
 
