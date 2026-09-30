@@ -7,7 +7,9 @@
 
 - `chatgpt-1m` 文案修正：原写"Altman 在社交媒体晒出增长曲线"不实，原帖只有一句文字；改为引用原帖「ChatGPT 周三上线，今天用户突破 100 万了！」，来源从维基百科换成原帖 https://x.com/sama/status/1599668808285028353 （已用 Techmeme 2022-12-05 存档核对）
 - 三张站方供图入库（README「历史图片」第四批已登记）：`chatgpt-1m.png`（Altman 原帖截图）、`meta-muse.jpg`（发布会 Muse 购物功能演示）、`typesafe-jev.jpg`（打孔卡与专利图拼贴）；后两张 PNG 转 JPG 压缩
-- **待站方补**：meta-muse、typesafe-jev 两张图的原始出处链接（README 里标了"待站方补充"）；opus-55 还缺图
+- meta-muse、typesafe-jev 两张图的出处已按站方说明补上（分别截自 TechCrunch 9/25 报道、TypeSafe 官方博客），README 与 image.sourceUrl 同步
+- **展品支持视频**：`ExhibitImage` 新增可选 `video`（public/ 里的 mp4），`src` 放视频的一帧当封面；时间线缩略图显示封面 + 「▶ 视频」角标，详情页直接播放（带控件、不自动播放）。已用临时测试视频验证过渲染
+- **待站方做**：opus-55 用 Anthropic 在 X 上的发布视频，本环境下载不了 X 的视频，需站方下载 mp4 后放进来（封面帧可用 ffmpeg 抽）
 - 无图展品现为 4 个：chatgpt-100m、bard-fail、nvidia-1t、opus-55（ChatGPT 展品本身用对话框演示，不算缺图）
 
 ## 上一轮（2026-09-30 夜 · 2026 补三件新展品）

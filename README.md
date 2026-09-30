@@ -141,5 +141,5 @@ public/ai-outage.png 为「ai-outage」展品配图：报道配图（21财经，
 
 —— 以下为 2026-09-30 第四批收录（站方供图）——
 public/chatgpt-1m.png 为「chatgpt-1m」展品配图：Sam Altman 2022-12-05 推文截图（含马斯克回复），站方截取。原帖：https://x.com/sama/status/1599668808285028353
-public/meta-muse.jpg 为「meta-muse」展品配图：Meta 发布会上 Muse 购物功能演示的现场画面，站方供图，原始出处待站方补充（PNG 转 JPG 收录）。
-public/typesafe-jev.jpg 为「typesafe-jev」展品配图：打孔卡与专利图拼贴插画，站方供图，原始出处待站方补充（PNG 转 JPG 收录）。
+public/meta-muse.jpg 为「meta-muse」展品配图：Meta 发布会上 Muse 购物功能演示的现场画面，站方截自 TechCrunch 报道（PNG 转 JPG 收录）：https://techcrunch.com/2026/09/25/meta-is-putting-its-muscle-behind-muse-as-the-ai-app-takes-off/
+public/typesafe-jev.jpg 为「typesafe-jev」展品配图：打孔卡与专利图拼贴插画，站方截自 TypeSafe 官方发布博客（PNG 转 JPG 收录）：https://typesafe.ai/blog/introducing-system-one-models-and-jev

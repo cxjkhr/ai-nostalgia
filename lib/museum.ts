@@ -18,8 +18,10 @@ export type TimelineEvent = {
 };
 
 // 展品配图：visual:'image' 时必填；文件放 public/，来源与下载日期须在 README「历史图片」登记。
+// 有视频的展品：video 填 public/ 里的 mp4，src 放视频里的一帧当封面（时间线缩略图用封面，详情页播放视频）。
 export type ExhibitImage = {
   src: string;
+  video?: string;
   width: number;
   height: number;
   alt: string;
@@ -1722,7 +1724,8 @@ export const events: TimelineEvent[] = (
         width: 900,
         height: 449,
         alt: 'Meta 发布会舞台上，演讲者介绍 Muse 的购物功能，大屏上是几家支付与购物应用的图标',
-        note: 'Muse 购物功能演示 · 发布会现场（站方供图）',
+        note: 'Muse 购物功能演示 · 发布会现场（TechCrunch 报道配图）',
+        sourceUrl: 'https://techcrunch.com/2026/09/25/meta-is-putting-its-muscle-behind-muse-as-the-ai-app-takes-off/',
       },
     },
     {
@@ -1743,7 +1746,8 @@ export const events: TimelineEvent[] = (
         width: 1230,
         height: 1008,
         alt: '拼贴插画：青绿色打孔卡叠在机械专利图和戴眼镜的人头线稿上',
-        note: '打孔卡与专利图拼贴 · Jev 发布配图（站方供图）',
+        note: '打孔卡与专利图拼贴 · TypeSafe 官方发布配图',
+        sourceUrl: 'https://typesafe.ai/blog/introducing-system-one-models-and-jev',
       },
     },
     {

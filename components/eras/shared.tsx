@@ -29,9 +29,17 @@ export function yearProgress(date:string){
   return Math.round((d.getTime()-start)/(end-start)*1000)/10;
 }
 
-// 展品图：一律完整显示（contain），不裁切官方横幅和论文插图。
+// 展品图：一律完整显示（contain），不裁切官方横幅和论文插图。有视频的展品在缩略图上标一个"视频"角标。
 export function ExhibitImg({event,className='exhibit-img'}:{event:TimelineEvent;className?:string}){
   if(!event.image)return null;
-  const {src,alt,width,height}=event.image;
-  return <img className={className} src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async"/>;
+  const {src,alt,width,height,video}=event.image;
+  const img=<img className={className} src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async"/>;
+  return video?<>{img}<span className="video-badge" aria-label="视频">▶ 视频</span></>:img;
+}
+
+// 详情页：有视频就直接放视频，封面用同一帧。
+export function ExhibitVideo({event}:{event:TimelineEvent}){
+  if(!event.image?.video)return null;
+  const {src,video,width,height,alt}=event.image;
+  return <video className="exhibit-img exhibit-video" src={video} poster={src} width={width} height={height} controls playsInline preload="metadata" aria-label={alt}/>;
 }
