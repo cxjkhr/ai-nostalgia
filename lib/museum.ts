@@ -12,6 +12,17 @@ export type TimelineEvent = {
   category: CategoryId;
   tier: 'major' | 'minor';
   visual?: 'chat' | 'image';
+  image?: ExhibitImage;
+};
+
+// 展品配图：visual:'image' 时必填；文件放 public/，来源与下载日期须在 README「历史图片」登记。
+export type ExhibitImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  note: string;
+  sourceUrl?: string;
 };
 
 // 全站展品的唯一数据源；date 用 ISO 格式，展示格式由 dateLabel 等负责。
@@ -32,6 +43,13 @@ export const events: TimelineEvent[] = (
       category: 'images',
       tier: 'minor',
       visual: 'image',
+      image: {
+        src: '/dalle-2.png',
+        width: 1213,
+        height: 600,
+        alt: '宇航员骑马与弹贝斯的北极熊——DALL·E 2 生成样例拼图',
+        note: '宇航员骑马 · 北极熊贝斯手 · DALL·E 2 生成样例',
+      },
     },
     {
       id: 'github-copilot-ga',
@@ -45,6 +63,15 @@ export const events: TimelineEvent[] = (
       source: 'https://github.blog/news-insights/company-news/github-copilot-is-generally-available-to-all-developers/',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/github-copilot-ga.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'GitHub Copilot 正式发布的官方博客配图',
+        note: 'Copilot GA · GitHub 官方博客图',
+        sourceUrl: 'https://github.blog/news-insights/company-news/github-copilot-is-generally-available-to-all-developers/',
+      },
     },
     {
       id: 'midjourney-beta',
@@ -58,6 +85,16 @@ export const events: TimelineEvent[] = (
       source: 'https://en.wikipedia.org/wiki/Midjourney',
       category: 'images',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/midjourney-beta.jpg',
+        width: 960,
+        height: 960,
+        alt: 'Midjourney 早期用户生成的黑暗幻想风格宫殿画面',
+        note: '恐怖统治时期的宫殿 · 2022 年 11 月用户生成',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:Palace_during_a_reign_of_terror_Midjourney.png',
+      },
     },
     {
       id: 'stable-diffusion',
@@ -72,6 +109,15 @@ export const events: TimelineEvent[] = (
       category: 'images',
       tier: 'major',
       visual: 'image',
+      image: {
+        src: '/stable-diffusion.png',
+        width: 1024,
+        height: 512,
+        alt: 'CompVis 官方仓库中的 Stable Diffusion 原始生成样例',
+        note: 'CompVis 官方仓库原始样例',
+        sourceUrl:
+          'https://github.com/CompVis/stable-diffusion/blob/main/assets/stable-samples/txt2img/000002025.png',
+      },
     },
     {
       id: 'character-ai',
@@ -85,6 +131,16 @@ export const events: TimelineEvent[] = (
       source: 'https://en.wikipedia.org/wiki/Character.ai',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/character-ai.png',
+        width: 701,
+        height: 874,
+        alt: 'character.ai 中与“维特根斯坦”角色对话的真实界面截图',
+        note: '与维特根斯坦对话 · character.ai 界面实录',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:Wittgenstein_dialogue_at_character.ai.png',
+      },
     },
     {
       id: 'whisper',
@@ -97,6 +153,15 @@ export const events: TimelineEvent[] = (
       source: 'https://github.com/openai/whisper',
       category: 'audio',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/whisper.png',
+        width: 1400,
+        height: 1061,
+        alt: 'Whisper 论文中的模型架构图：音频频谱经 Transformer 编码解码为文本',
+        note: '论文架构图 Figure 1 · Whisper 技术报告',
+        sourceUrl: 'https://commons.wikimedia.org/wiki/File:OpenAI_Whisper_architecture.png',
+      },
     },
     {
       id: 'chatgpt',
@@ -124,6 +189,16 @@ export const events: TimelineEvent[] = (
       source: 'https://prisma-ai.com/lensa',
       category: 'images',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/lensa.jpg',
+        width: 750,
+        height: 1297,
+        alt: 'Lensa 应用中的魔法头像包截图：六张虹彩风格生成肖像',
+        note: 'Iridescent 头像包 · Lensa 生成结果',
+        sourceUrl:
+          'https://www.polygon.com/23513386/ai-art-lensa-magic-avatars-artificial-intelligence-explained-stable-diffusion',
+      },
     },
     {
       id: 'chatgpt-1m',
@@ -151,6 +226,15 @@ export const events: TimelineEvent[] = (
       source: 'https://blogs.microsoft.com/blog/2023/01/23/microsoftandopenaiextendpartnership/',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/ms-openai.png',
+        width: 960,
+        height: 540,
+        alt: '微软与 OpenAI 扩大合作的官方宣传图',
+        note: '微软 × OpenAI · 官方合作图',
+        sourceUrl: 'https://blogs.microsoft.com/blog/2023/01/23/microsoftandopenaiextendpartnership/',
+      },
     },
     {
       id: 'elevenlabs',
@@ -164,6 +248,15 @@ export const events: TimelineEvent[] = (
       source: 'https://elevenlabs.io',
       category: 'audio',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/elevenlabs.png',
+        width: 1200,
+        height: 630,
+        alt: 'ElevenLabs 官方品牌封面图',
+        note: 'ElevenLabs · 官方品牌图',
+        sourceUrl: 'https://elevenlabs.io',
+      },
     },
     {
       id: 'chatgpt-100m',
@@ -190,6 +283,16 @@ export const events: TimelineEvent[] = (
       source: 'https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/new-bing.png',
+        width: 1080,
+        height: 2340,
+        alt: 'Microsoft Bing Chat 移动端界面截图',
+        note: 'Bing Chat 界面实录 · 2023 年 11 月',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:Microsoft_Bing_Chat_on_Wikipedia_(28_November_2023)_05.png',
+      },
     },
     {
       id: 'bard-fail',
@@ -216,6 +319,15 @@ export const events: TimelineEvent[] = (
       source: 'https://arxiv.org/abs/2302.13971',
       category: 'open',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/llama-leak.png',
+        width: 1200,
+        height: 600,
+        alt: 'LLaMA 官方 GitHub 仓库预览卡',
+        note: 'facebookresearch/llama · 官方仓库卡',
+        sourceUrl: 'https://github.com/facebookresearch/llama',
+      },
     },
     {
       id: 'claude-1',
@@ -229,6 +341,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.anthropic.com/news/introducing-claude',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/claude-1.jpg',
+        width: 2400,
+        height: 1260,
+        alt: 'Claude 初代发布公告配图',
+        note: 'Claude · 初代官宣图',
+        sourceUrl: 'https://www.anthropic.com/news/introducing-claude',
+      },
     },
     {
       id: 'gpt-4',
@@ -242,6 +363,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/gpt-4-research/',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/gpt-4.png',
+        width: 1068,
+        height: 772,
+        alt: 'GPT-4 技术报告演示图：请解释这张“在移动的出租车顶上熨衣服”的照片',
+        note: '出租车顶熨衣服 · GPT-4 技术报告多模态演示',
+        sourceUrl: 'https://commons.wikimedia.org/wiki/File:Gpt-4-visual.png',
+      },
     },
     {
       id: 'ernie-bot',
@@ -255,6 +385,15 @@ export const events: TimelineEvent[] = (
       source: 'https://en.wikipedia.org/wiki/ERNIE_Bot',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/ernie-bot.jpg',
+        width: 960,
+        height: 960,
+        alt: '文心一言把成语「车水马龙」按字面生成的画面',
+        note: '车水马龙 · 文心一言字面理解名场面',
+        sourceUrl: 'https://commons.wikimedia.org/wiki/File:文心一言创作的“车水马龙”.jpg',
+      },
     },
     {
       id: 'runway-gen2',
@@ -268,6 +407,15 @@ export const events: TimelineEvent[] = (
       source: 'https://en.wikipedia.org/wiki/Runway_(company)',
       category: 'video',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/runway-gen2.png',
+        width: 1200,
+        height: 630,
+        alt: 'Runway 官方品牌预览卡',
+        note: 'Runway · 官方品牌卡',
+        sourceUrl: 'https://runwayml.com',
+      },
     },
     {
       id: 'autogpt',
@@ -281,6 +429,15 @@ export const events: TimelineEvent[] = (
       source: 'https://github.com/Significant-Gravitas/AutoGPT',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/autogpt.png',
+        width: 1200,
+        height: 600,
+        alt: 'AutoGPT 官方仓库预览卡',
+        note: 'Significant-Gravitas/AutoGPT · 官方仓库卡',
+        sourceUrl: 'https://github.com/Significant-Gravitas/AutoGPT',
+      },
     },
     {
       id: 'nvidia-1t',
@@ -307,6 +464,15 @@ export const events: TimelineEvent[] = (
       source: 'https://x.ai',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/xai-grok-1.jpg',
+        width: 1400,
+        height: 735,
+        alt: 'xAI 官方预览图',
+        note: 'xAI · 官方品牌图',
+        sourceUrl: 'https://x.ai',
+      },
     },
     {
       id: 'llama-2',
@@ -320,6 +486,15 @@ export const events: TimelineEvent[] = (
       source: 'https://ai.meta.com/llama/',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/llama-2.jpg',
+        width: 1600,
+        height: 900,
+        alt: 'Llama 2 官方发布头图',
+        note: 'Llama 2 · Meta 官宣头图',
+        sourceUrl: 'https://ai.meta.com/blog/llama-2/',
+      },
     },
     {
       id: 'dalle-3',
@@ -333,6 +508,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/dall-e-3/',
       category: 'images',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/dalle-3.jpg',
+        width: 1024,
+        height: 1024,
+        alt: 'DALL-E 3 官方样例：照片级真实感的荔枝特写',
+        note: '荔枝特写 · DALL-E 3 官方样例',
+        sourceUrl: 'https://openai.com/index/dall-e-3/',
+      },
     },
     {
       id: 'mistral-7b',
@@ -346,6 +530,15 @@ export const events: TimelineEvent[] = (
       source: 'https://mistral.ai/news/announcing-mistral-7b',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/mistral-7b.jpg',
+        width: 1800,
+        height: 1074,
+        alt: 'Mistral 7B 发布公告官方缩略图',
+        note: 'Mistral 7B · 官宣缩略图',
+        sourceUrl: 'https://mistral.ai/news/announcing-mistral-7b',
+      },
     },
     {
       id: 'openai-devday',
@@ -359,6 +552,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/openai-devday/',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/openai-devday.jpg',
+        width: 2560,
+        height: 1925,
+        alt: 'OpenAI DevDay 2023 立方舞台主题演讲照片',
+        note: 'DevDay 立方舞台 · 报道实拍',
+        sourceUrl: 'https://openai.com/index/openai-devday/',
+      },
     },
     {
       id: 'altman-saga',
@@ -372,6 +574,16 @@ export const events: TimelineEvent[] = (
       source: 'https://en.wikipedia.org/wiki/November_2023_OpenAI_leadership_crisis',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/altman-saga.jpg',
+        width: 768,
+        height: 1024,
+        alt: 'Sam Altman 与 Ilya Sutskever 在特拉维夫大学的合影',
+        note: '风波双主角 · 2023 年 6 月同框于特拉维夫大学',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:Ilya_Sutskever_and_Sam_Altman_in_TAU.jpg',
+      },
     },
     {
       id: 'gemini-1',
@@ -385,6 +597,15 @@ export const events: TimelineEvent[] = (
       source: 'https://deepmind.google/models/gemini/',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/gemini-1.png',
+        width: 960,
+        height: 409,
+        alt: 'Gemini 技术报告中的多模态推理演示',
+        note: '多模态推理演示 · Gemini 技术报告',
+        sourceUrl: 'https://commons.wikimedia.org/wiki/File:Gemini_multimodal_AI.png',
+      },
     },
     {
       id: 'mixtral',
@@ -398,6 +619,15 @@ export const events: TimelineEvent[] = (
       source: 'https://mistral.ai/news/mixtral-of-experts',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/mixtral.jpg',
+        width: 1800,
+        height: 1074,
+        alt: 'Mixtral 8x7B 发布公告官方缩略图',
+        note: 'Mixtral 8x7B · 官宣缩略图',
+        sourceUrl: 'https://mistral.ai/news/mixtral-of-experts',
+      },
     },
     // ── 2024 ──────────────────────────────────────────────
     {
@@ -412,6 +642,16 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/video-generation-models-as-world-simulators/',
       category: 'video',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/sora.jpg',
+        width: 1280,
+        height: 720,
+        alt: 'Sora 官方演示视频“东京漫步”截帧：霓虹夜街与橱窗反射',
+        note: '东京漫步 · Sora 官方演示截帧',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:OpenAI_Sora_in_Action-_Tokyo_Walk.webm',
+      },
     },
     {
       id: 'gemini-15',
@@ -425,6 +665,15 @@ export const events: TimelineEvent[] = (
       source: 'https://deepmind.google/models/gemini/',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/gemini-15.png',
+        width: 1200,
+        height: 630,
+        alt: 'Gemini 官方视觉图',
+        note: 'Gemini · 官方视觉图',
+        sourceUrl: 'https://deepmind.google/models/gemini/',
+      },
     },
     {
       id: 'claude-3',
@@ -438,6 +687,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.anthropic.com/news/claude-3-family',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/claude-3.png',
+        width: 1200,
+        height: 600,
+        alt: 'Claude 3 家族官方配图：三颗宝石对应 Opus、Sonnet 与 Haiku',
+        note: 'Opus · Sonnet · Haiku · Claude 3 官宣图',
+        sourceUrl: 'https://www.anthropic.com/news/claude-3-family',
+      },
     },
     {
       id: 'devin',
@@ -451,6 +709,15 @@ export const events: TimelineEvent[] = (
       source: 'https://cognition.com/blog/introducing-devin',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/devin.jpg',
+        width: 1200,
+        height: 627,
+        alt: 'Devin 发布公告配图',
+        note: 'Devin · Cognition 官宣图',
+        sourceUrl: 'https://cognition.com/blog/introducing-devin',
+      },
     },
     {
       id: 'nvidia-gtc',
@@ -464,6 +731,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.nvidia.com/en-us/events/gtc/',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/nvidia-gtc.jpg',
+        width: 1920,
+        height: 1078,
+        alt: '黄仁勋在 GTC 2024 主题演讲舞台',
+        note: 'GTC 2024 主题演讲 · 报道实拍',
+        sourceUrl: 'https://www.nvidia.com/en-us/events/gtc/',
+      },
     },
     {
       id: 'kimi-200w',
@@ -477,6 +753,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.moonshot.ai',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/kimi-200w.png',
+        width: 900,
+        height: 1500,
+        alt: 'Kimi 智能助手宣传图：概括 50 个 PDF 的长文本能力',
+        note: '超大脑容量宣传图 · 下载站配图',
+        sourceUrl: 'https://www.moonshot.ai',
+      },
     },
     {
       id: 'suno-v3',
@@ -490,6 +775,15 @@ export const events: TimelineEvent[] = (
       source: 'https://suno.com',
       category: 'audio',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/suno-v3.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Suno 官方预览图',
+        note: 'Suno · 官方品牌图',
+        sourceUrl: 'https://suno.com',
+      },
     },
     {
       id: 'llama-3',
@@ -503,6 +797,15 @@ export const events: TimelineEvent[] = (
       source: 'https://ai.meta.com/llama/',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/llama-3.png',
+        width: 1200,
+        height: 600,
+        alt: 'Llama 3 官方仓库预览卡',
+        note: 'meta-llama/llama3 · 官方仓库卡',
+        sourceUrl: 'https://github.com/meta-llama/llama3',
+      },
     },
     {
       id: 'gpt-4o',
@@ -516,6 +819,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/hello-gpt-4o/',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/gpt-4o.png',
+        width: 1600,
+        height: 900,
+        alt: 'GPT-4o 官方公告图',
+        note: 'GPT-4o · OpenAI 官宣图',
+        sourceUrl: 'https://openai.com/index/hello-gpt-4o/',
+      },
     },
     {
       id: 'kling',
@@ -529,6 +841,15 @@ export const events: TimelineEvent[] = (
       source: 'https://klingai.com',
       category: 'video',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/kling.jpg',
+        width: 201,
+        height: 112,
+        alt: '可灵 AI 官网封面图',
+        note: '可灵 · 官网封面图',
+        sourceUrl: 'https://klingai.com',
+      },
     },
     {
       id: 'apple-intelligence',
@@ -542,6 +863,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.apple.com/apple-intelligence/',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/apple-intelligence.png',
+        width: 1200,
+        height: 630,
+        alt: 'Apple Intelligence 官方预览图',
+        note: 'Apple Intelligence · 官方 og 图',
+        sourceUrl: 'https://www.apple.com/apple-intelligence/',
+      },
     },
     {
       id: 'claude-35',
@@ -555,6 +885,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.anthropic.com/news/claude-3-5-sonnet',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/claude-35.jpg',
+        width: 1400,
+        height: 700,
+        alt: 'Claude 3.5 Sonnet 发布公告配图',
+        note: 'Claude 3.5 Sonnet · 官宣图',
+        sourceUrl: 'https://www.anthropic.com/news/claude-3-5-sonnet',
+      },
     },
     {
       id: 'flux',
@@ -568,6 +907,15 @@ export const events: TimelineEvent[] = (
       source: 'https://bfl.ai',
       category: 'images',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/flux.jpg',
+        width: 1400,
+        height: 800,
+        alt: 'FLUX.1 官方样图网格',
+        note: 'FLUX.1 样图网格 · 官方仓库 README',
+        sourceUrl: 'https://github.com/black-forest-labs/flux',
+      },
     },
     {
       id: 'notebooklm',
@@ -581,6 +929,15 @@ export const events: TimelineEvent[] = (
       source: 'https://blog.google/innovation-and-ai/products/notebooklm-audio-overviews/',
       category: 'audio',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/notebooklm.png',
+        width: 1300,
+        height: 542,
+        alt: 'NotebookLM 音频概览官方主视觉',
+        note: '音频概览主视觉 · Google 官方',
+        sourceUrl: 'https://blog.google/innovation-and-ai/products/notebooklm-audio-overviews/',
+      },
     },
     {
       id: 'o1-preview',
@@ -594,6 +951,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/introducing-openai-o1-preview/',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/o1-preview.png',
+        width: 1600,
+        height: 900,
+        alt: 'OpenAI o1-preview 官方公告图',
+        note: 'o1-preview · OpenAI 官宣图',
+        sourceUrl: 'https://openai.com/index/introducing-openai-o1-preview/',
+      },
     },
     {
       id: 'qwen-25',
@@ -607,6 +973,15 @@ export const events: TimelineEvent[] = (
       source: 'https://qwen.ai',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/qwen-25.svg',
+        width: 200,
+        height: 200,
+        alt: 'Qwen 标志',
+        note: 'Qwen 标志 · 通义千问开源家族',
+        sourceUrl: 'https://commons.wikimedia.org/wiki/File:Qwen_logo.svg',
+      },
     },
     {
       id: 'ai-nobel',
@@ -620,6 +995,16 @@ export const events: TimelineEvent[] = (
       source: 'https://www.nobelprize.org/prizes/physics/2024/summary/',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/ai-nobel.jpg',
+        width: 1400,
+        height: 933,
+        alt: 'Demis Hassabis 在 2024 年诺贝尔讲座上演讲',
+        note: 'Hassabis 的诺贝尔讲座 · 2024 年 12 月斯德哥尔摩',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:Demis_Hassabis_at_the_2024_Nobel_Lectures_2.jpg',
+      },
     },
     {
       id: 'computer-use',
@@ -633,6 +1018,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.anthropic.com/news/3-5-models-upgrade',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/computer-use.png',
+        width: 1200,
+        height: 600,
+        alt: 'Anthropic computer-use 演示仓库预览卡',
+        note: 'anthropic-quickstarts · 官方仓库卡',
+        sourceUrl: 'https://github.com/anthropics/anthropic-quickstarts',
+      },
     },
     {
       id: 'chatgpt-search',
@@ -646,6 +1040,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/chatgpt-search/',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/chatgpt-search.jpg',
+        width: 1400,
+        height: 875,
+        alt: 'ChatGPT Search 界面截图：带来源侧栏的搜索回答',
+        note: '搜索界面实录 · 报道截图',
+        sourceUrl: 'https://openai.com/index/chatgpt-search/',
+      },
     },
     {
       id: 'openai-12days',
@@ -659,6 +1062,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/12-days-of-openai/',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/openai-12days.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'OpenAI 标志编辑插画',
+        note: 'OpenAI · 报道编辑插画',
+        sourceUrl: 'https://openai.com/index/12-days-of-openai/',
+      },
     },
     {
       id: 'sora-turbo',
@@ -671,6 +1083,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/sora-is-here/',
       category: 'video',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/sora-turbo.jpg',
+        width: 1600,
+        height: 900,
+        alt: 'Sora 正式上线官方公告图',
+        note: 'Sora is here · OpenAI 官宣图',
+        sourceUrl: 'https://openai.com/index/sora-is-here/',
+      },
     },
     {
       id: 'deepseek-v3',
@@ -684,6 +1105,15 @@ export const events: TimelineEvent[] = (
       source: 'https://api-docs.deepseek.com/news/news241226',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/deepseek-v3.png',
+        width: 1200,
+        height: 600,
+        alt: 'DeepSeek-V3 官方仓库预览卡',
+        note: 'deepseek-ai/DeepSeek-V3 · 官方仓库卡',
+        sourceUrl: 'https://github.com/deepseek-ai/DeepSeek-V3',
+      },
     },
     // ── 2025 ──────────────────────────────────────────────
     {
@@ -698,6 +1128,15 @@ export const events: TimelineEvent[] = (
       source: 'https://api-docs.deepseek.com/news/news250120/',
       category: 'open',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/deepseek-r1.jpg',
+        width: 1400,
+        height: 928,
+        alt: '手机屏幕上的 DeepSeek 应用登顶 App Store 免费榜',
+        note: '登顶美区 App Store · Fortune 报道实拍',
+        sourceUrl: 'https://fortune.com/2025/01/27/marc-andreessen-deepseek-ai-sputnik-moment/',
+      },
     },
     {
       id: 'manus',
@@ -711,6 +1150,15 @@ export const events: TimelineEvent[] = (
       source: 'https://manus.im',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/manus.png',
+        width: 1241,
+        height: 655,
+        alt: 'Manus 官方横幅图',
+        note: 'Manus · 官方横幅图',
+        sourceUrl: 'https://manus.im',
+      },
     },
     {
       id: 'ghibli',
@@ -724,6 +1172,16 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/introducing-4o-image-generation/',
       category: 'images',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/ghibli.jpg',
+        width: 832,
+        height: 1248,
+        alt: 'GPT-4o 生成的吉卜力风格特朗普肖像',
+        note: '吉卜力风肖像 · 2025 年 3 月风潮实物',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:GPT-4o_Studio_Ghibli_portrait_of_Donald_Trump.png',
+      },
     },
     {
       id: 'llama-4',
@@ -737,6 +1195,15 @@ export const events: TimelineEvent[] = (
       source: 'https://ai.meta.com/llama/',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/llama-4.png',
+        width: 1600,
+        height: 900,
+        alt: 'Meta Llama 官方视觉图',
+        note: 'Llama · Meta 官方视觉图',
+        sourceUrl: 'https://ai.meta.com/llama/',
+      },
     },
     {
       id: 'codex-cli',
@@ -750,6 +1217,15 @@ export const events: TimelineEvent[] = (
       source: 'https://github.com/openai/codex',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/codex-cli.png',
+        width: 1200,
+        height: 600,
+        alt: 'OpenAI Codex 官方仓库预览卡',
+        note: 'openai/codex · 官方仓库卡',
+        sourceUrl: 'https://github.com/openai/codex',
+      },
     },
     {
       id: 'qwen-3',
@@ -763,6 +1239,15 @@ export const events: TimelineEvent[] = (
       source: 'https://qwen.ai',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/qwen-3.png',
+        width: 1200,
+        height: 600,
+        alt: 'Qwen3 官方仓库预览卡',
+        note: 'QwenLM/Qwen3 · 官方仓库卡',
+        sourceUrl: 'https://github.com/QwenLM/Qwen3',
+      },
     },
     {
       id: 'veo-3',
@@ -776,6 +1261,16 @@ export const events: TimelineEvent[] = (
       source: 'https://finance.sina.com.cn/stock/usstock/c/2025-05-21/doc-inexhfyr3220941.shtml',
       category: 'video',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/veo-3.jpg',
+        width: 1280,
+        height: 720,
+        alt: 'Veo 3 演示视频「视觉系男子喝柠檬水」截帧',
+        note: '喝柠檬水的视觉系男子 · Veo 3 演示截帧',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:Visual_Kei_Man_Enjoys_Lemonade_(Veo_3).webm',
+      },
     },
     {
       id: 'claude-4',
@@ -789,6 +1284,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.anthropic.com/news/claude-4',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/claude-4.jpg',
+        width: 1400,
+        height: 788,
+        alt: 'Claude 4 官方公告头图：粘土质感的手与大脑',
+        note: '粘土手与大脑 · Claude 4 官宣图',
+        sourceUrl: 'https://www.anthropic.com/news/claude-4',
+      },
     },
     {
       id: 'grok-4',
@@ -802,6 +1306,15 @@ export const events: TimelineEvent[] = (
       source: 'https://x.ai/news/grok-4',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/grok-4.png',
+        width: 1486,
+        height: 836,
+        alt: 'Grok 4 官方公告图',
+        note: 'GROK 4 · xAI 官宣图',
+        sourceUrl: 'https://x.ai/news/grok-4',
+      },
     },
     {
       id: 'kimi-k2',
@@ -815,6 +1328,15 @@ export const events: TimelineEvent[] = (
       source: 'https://finance.sina.com.cn/roll/2025-07-13/doc-inffikpm7017615.shtml',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/kimi-k2.png',
+        width: 1200,
+        height: 600,
+        alt: 'Kimi K2 官方仓库预览卡',
+        note: 'MoonshotAI/Kimi-K2 · 官方仓库卡',
+        sourceUrl: 'https://github.com/MoonshotAI/Kimi-K2',
+      },
     },
     {
       id: 'chatgpt-agent',
@@ -828,6 +1350,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/introducing-chatgpt-agent/',
       category: 'agents',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/chatgpt-agent.png',
+        width: 1600,
+        height: 900,
+        alt: 'ChatGPT Agent 官方公告图',
+        note: 'ChatGPT Agent · OpenAI 官宣图',
+        sourceUrl: 'https://openai.com/index/introducing-chatgpt-agent/',
+      },
     },
     {
       id: 'gpt-5',
@@ -841,6 +1372,16 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/introducing-gpt-5/',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/gpt-5.png',
+        width: 892,
+        height: 678,
+        alt: 'GPT-5 界面中的思考过程截图',
+        note: '思维链界面实录 · 2025 年 8 月发布当周',
+        sourceUrl:
+          'https://commons.wikimedia.org/wiki/File:Denkprozess_GPT-5_Screenshot_2025-08-08_214952.png',
+      },
     },
     {
       id: 'nano-banana',
@@ -854,6 +1395,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.cls.cn/detail/2131738',
       category: 'images',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/nano-banana.jpg',
+        width: 1000,
+        height: 546,
+        alt: 'Nano Banana 犀牛一致性测试：同一只犀牛替换不同材质',
+        note: '犀牛换材质测试 · Nano Banana 出圈名场面',
+        sourceUrl: 'https://commons.wikimedia.org/wiki/File:Nano_Banana_-_Crayon_Rhino.png',
+      },
     },
     {
       id: 'sora-2',
@@ -867,6 +1417,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/sora-2/',
       category: 'video',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/sora-2.jpg',
+        width: 1280,
+        height: 720,
+        alt: 'Sora 2 发布视频截帧：湖面跪板落水瞬间',
+        note: 'This is Sora 2 · 发布视频截帧',
+        sourceUrl: 'https://commons.wikimedia.org/wiki/File:OpenAI_-_This_is_Sora_2.webm',
+      },
     },
     {
       id: 'gpt-51',
@@ -880,6 +1439,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/zh-Hans-CN/index/gpt-5-1/',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/gpt-51.png',
+        width: 1600,
+        height: 900,
+        alt: 'GPT-5.1 官方公告图',
+        note: 'GPT-5.1 · OpenAI 官宣图',
+        sourceUrl: 'https://openai.com/zh-Hans-CN/index/gpt-5-1/',
+      },
     },
     {
       id: 'gemini-3',
@@ -893,6 +1461,15 @@ export const events: TimelineEvent[] = (
       source: 'http://www.news.cn/tech/20251120/fe871e40a8ae4865b25ed101802d0071/c.html',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/gemini-3.jpg',
+        width: 400,
+        height: 600,
+        alt: 'Gemini 3 相关报道配图',
+        note: 'Gemini 3 · 报道配图',
+        sourceUrl: 'http://www.news.cn/tech/20251120/fe871e40a8ae4865b25ed101802d0071/c.html',
+      },
     },
     {
       id: 'opus-45',
@@ -906,6 +1483,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.anthropic.com/news/claude-opus-4-5',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/opus-45.jpg',
+        width: 1400,
+        height: 788,
+        alt: 'Claude Opus 4.5 官方公告配图',
+        note: 'Claude Opus 4.5 · 官宣图',
+        sourceUrl: 'https://www.anthropic.com/news/claude-opus-4-5',
+      },
     },
     // ── 2026 ──────────────────────────────────────────────
     {
@@ -920,6 +1506,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.guancha.cn/economy/2026_04_24_814797.shtml',
       category: 'open',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/deepseek-v4-open.png',
+        width: 1200,
+        height: 232,
+        alt: 'DeepSeek-V4 开源相关报道配图',
+        note: 'DeepSeek-V4 · 报道配图',
+        sourceUrl: 'https://www.guancha.cn/economy/2026_04_24_814797.shtml',
+      },
     },
     {
       id: 'agent-harness',
@@ -933,6 +1528,15 @@ export const events: TimelineEvent[] = (
       source: 'https://cursor.com/cn/blog/continually-improving-agent-harness',
       category: 'agents',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/agent-harness.jpg',
+        width: 1400,
+        height: 914,
+        alt: 'Cursor 博客的 Agent Harness 配图',
+        note: 'Agent Harness · Cursor 博客配图',
+        sourceUrl: 'https://cursor.com/cn/blog/continually-improving-agent-harness',
+      },
     },
     {
       id: 'glm-52',
@@ -946,6 +1550,15 @@ export const events: TimelineEvent[] = (
       source: 'https://zhuanlan.zhihu.com/p/2050733508507833888',
       category: 'open',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/glm-52.png',
+        width: 1200,
+        height: 600,
+        alt: 'GLM-5 官方仓库预览卡',
+        note: 'zai-org/GLM-5 · 官方仓库卡（前代仓库）',
+        sourceUrl: 'https://github.com/zai-org/GLM-5',
+      },
     },
     {
       id: 'kimi-k3',
@@ -959,6 +1572,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.tmtpost.com/8074132.html',
       category: 'open',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/kimi-k3.png',
+        width: 1200,
+        height: 600,
+        alt: 'Kimi K3 官方仓库预览卡',
+        note: 'MoonshotAI/Kimi-K3 · 官方仓库卡',
+        sourceUrl: 'https://github.com/MoonshotAI/Kimi-K3',
+      },
     },
     {
       id: 'opus-5',
@@ -972,6 +1594,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.anthropic.com/news/claude-opus-5',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/opus-5.jpg',
+        width: 1400,
+        height: 788,
+        alt: 'Claude Opus 5 官方公告配图：粘土质感插画',
+        note: '粘土插画 · Opus 5 官宣图',
+        sourceUrl: 'https://www.anthropic.com/news/claude-opus-5',
+      },
     },
     {
       id: 'deepseek-v4-pro',
@@ -985,6 +1616,15 @@ export const events: TimelineEvent[] = (
       source: 'https://api-docs.deepseek.com/zh-cn/news/news260813/',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/deepseek-v4-pro.jpg',
+        width: 3836,
+        height: 2038,
+        alt: 'DeepSeek 官方品牌社交卡',
+        note: 'DeepSeek · 官方品牌卡',
+        sourceUrl: 'https://api-docs.deepseek.com/zh-cn/news/news260813/',
+      },
     },
     {
       id: 'gemini-38',
@@ -998,6 +1638,15 @@ export const events: TimelineEvent[] = (
       source: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/gemini-38.png',
+        width: 1300,
+        height: 731,
+        alt: 'Gemini 3.8 Flash 官方头图',
+        note: 'Gemini 3.8 Flash · 官方头图',
+        sourceUrl: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/',
+      },
     },
     {
       id: 'gpt-6-astra',
@@ -1011,6 +1660,15 @@ export const events: TimelineEvent[] = (
       source: 'https://openai.com/index/gpt-6-astra/',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/gpt-6-astra.png',
+        width: 1600,
+        height: 900,
+        alt: 'GPT-6 Astra 官方公告图',
+        note: 'GPT-6 Astra · OpenAI 官宣图',
+        sourceUrl: 'https://openai.com/index/gpt-6-astra/',
+      },
     },
     {
       id: 'ai-outage',
@@ -1024,6 +1682,15 @@ export const events: TimelineEvent[] = (
       source: 'https://m.21jingji.com/article/20260904/herald/4b1de4e859674d1b41efdd1ccbbe4c00_zaker.html',
       category: 'agents',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/ai-outage.png',
+        width: 414,
+        height: 393,
+        alt: 'AI 服务状态监测页报道配图',
+        note: '服务状态页 · 报道配图',
+        sourceUrl: 'https://m.21jingji.com/article/20260904/herald/4b1de4e859674d1b41efdd1ccbbe4c00_zaker.html',
+      },
     },
   ] satisfies TimelineEvent[]
 ).sort((a, b) => a.date.localeCompare(b.date));
