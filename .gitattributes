@@ -1,2 +1,0 @@
-# 保留展品源码的原始字节，以便 SHA-256 在不同操作系统上仍可验证。
-public/artifacts/neon-rush/*.html -text

@@ -39,11 +39,4 @@ export const showcases: Record<string, ExhibitWork[]> = {
     description:'Audio Overview 首发公告中的双人播客，约 8 分 26 秒，英语。材料是介绍 NotebookLM 的 Keyword 博文；听到的两位主持人都是 AI 生成的声音。',
     sourceUrl:'https://blog.google/innovation-and-ai/products/notebooklm-audio-overviews/',
   }],
-  'codex-cli': [{
-    id: 'neon-rush', title: '霓虹极速 · NEON RUSH', kind: 'interactive',
-    src: '/artifacts/neon-rush/index.html', date: '2026 年项目归档',
-    provenance: 'AI 生成 · 馆主作品',
-    description: '馆主保存的 Codex 生成网页赛车。方向键或 WASD 驾驶，空格加速；手机可用屏幕按钮。具体底层模型和完整生成轮次尚未确认，不作为 2025 年发布时的原作。',
-    sourceUrl: '/artifacts/neon-rush/provenance.txt', sourceLabel: '作品来源与保存说明',
-  }],
 };

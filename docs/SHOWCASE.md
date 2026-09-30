@@ -11,7 +11,6 @@
 | dalle-2 | 宇航员骑马 | https://openai.com/index/dall-e-2/ 官方页面对应图片及提示词 | 本地原图，可放大 |
 | sora | 东京街头漫步 | https://openai.com/index/sora/ 与 2024-02-15 技术报告；媒体 Last-Modified 2024-02-15，H.264 1920×1080，59.967 秒 | 官方远程 MP4，点击加载 |
 | notebooklm | 首发 Audio Overview | https://blog.google/innovation-and-ai/products/notebooklm-audio-overviews/ 的 source 标签；发布日期与媒体 Last-Modified 均 2024-09-11，505.92 秒 | 官方远程 MP3，点击加载 |
-| codex-cli | NEON RUSH | 馆主桌面赛车合集；同目录「两个版本说明.txt」标为 Codex霓虹版 | 2026 馆主作品，非 2025 首发样例 |
 
 媒体地址：
 
@@ -23,9 +22,9 @@
 
 ## 交互作品边界
 
-iframe 仅 `sandbox="allow-scripts"`，不开放 same-origin、弹窗、表单、顶层导航。NEON RUSH 展示副本增加 CSP 禁止联网；成绩存储改为本次试玩内存，防止隔离环境访问 localStorage 报错。玩法不改。
+交互组件保留：iframe 仅 `sandbox="allow-scripts"`，不开放 same-origin、弹窗、表单、顶层导航。当前未收录交互作品。
 
-`public/artifacts/neon-rush/original.html` 保留原始字节；`index.html` 是兼容展示副本；说明与 SHA-256 同目录。新作品需要逐件核对可运行性与来源；不要向隔离作品传递站点凭据。不要将任意陌生远程 HTML 直接加入 allow-same-origin iframe。
+2026-09-30 按馆主要求撤下赛车，移除站内原始副本、展示副本、说明与哈希文件。桌面原作品未动。新作品仍需逐件核对可运行性与来源，不向作品传递站点凭据，不开放 allow-same-origin。
 
 ## 缩略图与评论
 
@@ -38,5 +37,5 @@ iframe 仅 `sandbox="allow-scripts"`，不开放 same-origin、弹窗、表单�
 ## 待办
 
 - 补四个主楼的真实来源链接。
-- 增加更多发布期的可核实原作；当前赛车只作为交互形式与馆主作品示范。
+- 增加更多发布期的可核实原作。
 - 为英文音频补可靠逐字稿与中文辅助内容；未完成前不宣称有字幕。
