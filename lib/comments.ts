@@ -8,6 +8,7 @@ export type MuseumComment = {
   date: string; // 展示格式：2022.12.01
   text: string;
   likes: number;
+  sourceUrl?: string;
   replies?: MuseumComment[];
 };
 
@@ -66,3 +67,7 @@ export const comments: Record<string, MuseumComment[]> = {
 };
 
 export const realSources: Record<string, string> = {};
+
+export function countComments(list: MuseumComment[]): number {
+  return list.reduce((count, comment) => count + 1 + countComments(comment.replies ?? []), 0);
+}

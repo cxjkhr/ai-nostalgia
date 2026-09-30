@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { comments, realSources, type MuseumComment } from '@/lib/comments';
+import { comments, realSources, countComments, type MuseumComment } from '@/lib/comments';
 
 // 楼层化名池：渲染时按 深度优先（主楼→楼中楼→下一主楼）顺序自动分配
 const NAMES = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve', 'Frank', 'Grace', 'Helen',
@@ -13,7 +13,7 @@ function withFloorNames(list: MuseumComment[]): MuseumComment[] {
   const walk = (items: MuseumComment[]): MuseumComment[] =>
     items.map((c) => ({
       ...c,
-      name: NAMES[i++] ?? 'Zoe',
+      name: NAMES[i] ? NAMES[i++] : '访客 ' + (++i),
       replies: c.replies?.length ? walk(c.replies) : undefined,
     }));
   return walk(list);
@@ -31,6 +31,7 @@ function CommentItem({ c }: { c: MuseumComment }) {
           <time>{c.date}</time>
         </div>
         <p>{c.text}</p>
+        {c.sourceUrl&&<a className="comment-origin" href={c.sourceUrl} target="_blank" rel="noreferrer">原始留言 ↗</a>}
         {c.replies?.length ? (
           <ul className="comment-sublist">
             {c.replies.map((r, i) => (
@@ -74,7 +75,7 @@ export default function CommentWall({ eventId }: { eventId: string }) {
             最新
           </button>
         </div>
-        <span className="comment-count">{list.length} 条留言</span>
+        <span className="comment-count">{list.length} 个讨论 · {countComments(list)} 条留言</span>
       </div>
       <ul className="comment-list">
         {sorted.map((c, i) => (
@@ -89,6 +90,7 @@ export default function CommentWall({ eventId }: { eventId: string }) {
           </a>
         </p>
       )}
+      {!source&&raw.some(c=>!c.sourceUrl)&&<p className="comment-source">留言由馆主提供并匿名摘编；部分原始链接待补。</p>}
     </div>
   );
 }

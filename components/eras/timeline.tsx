@@ -14,7 +14,8 @@ export function chronological(events:TimelineEvent[]){
 
 // 点都落在轴上；重要节点的名字立在点上方。按名字的大致宽度判断会不会撞上，撞上就往上错开一层。
 // width 是刻度大致的像素宽，只用来估算名字占多少百分比。
-const textWidth=(t:string)=>[...t].reduce((w,c)=>w+(c.charCodeAt(0)>0x2e80?13:7.5),0)+10;
+const graphemes=new Intl.Segmenter('zh-CN',{granularity:'grapheme'});
+const textWidth=(t:string)=>Array.from(graphemes.segment(t),x=>x.segment).reduce((w,c)=>w+(c.charCodeAt(0)>0x2e80?13:7.5),0)+10;
 function marks(list:TimelineEvent[],width:number){
   const placed:{from:number;to:number}[][]=[];
   return list.map(e=>{
@@ -33,7 +34,7 @@ function marks(list:TimelineEvent[],width:number){
 export function YearRuler({list,anchor,width=900}:{list:TimelineEvent[];anchor?:TimelineEvent;width?:number}){
   const m=marks(list,width),n=Math.max(0,...m.map(k=>k.lane))+1;
   return <div className="yr" style={{'--lanes':n} as React.CSSProperties}>
-    {m.map(({e,x,lane,edge})=><a key={e.id} href={'#'+anchorId(e)} data-spy={anchorId(e)} className={'yr-dot'+(lane>=0?' major':'')+(edge?' '+edge:'')+(e.id===anchor?.id?' anchor':'')} style={{left:x+'%','--lane':Math.max(lane,0)} as React.CSSProperties}><i aria-hidden="true"/><b>{e.name}<small>{monthDay(e.date)}</small></b></a>)}
+    {m.map(({e,x,lane,edge})=><a key={e.id} href={'#'+anchorId(e)} aria-label={e.name+' · '+monthDay(e.date)} data-spy={anchorId(e)} className={'yr-dot'+(lane>=0?' major':'')+(edge?' '+edge:'')+(e.id===anchor?.id?' anchor':'')} style={{left:x+'%','--lane':Math.max(lane,0)} as React.CSSProperties}><i aria-hidden="true"/><b>{e.name}<small>{monthDay(e.date)}</small></b></a>)}
     <div className="yr-track" aria-hidden="true">{Array.from({length:12},(_,i)=><span key={i}>{i+1}月</span>)}</div>
   </div>;
 }

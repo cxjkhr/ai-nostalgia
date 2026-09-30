@@ -1,4 +1,5 @@
 import {type TimelineEvent,type CategoryId,eras,categories} from '@/lib/museum';
+import thumbnailFiles from '@/lib/image-thumbnails.json';
 
 // 每一年一套"那年的界面"皮肤；新增年份没有专属皮肤时，沿用最新一套。
 export const skins=['2022','2023','2024','2025','2026'] as const;
@@ -35,7 +36,7 @@ const vtName=(event:TimelineEvent,named:boolean)=>named?{viewTransitionName:'ex-
 export function ExhibitImg({event,className='exhibit-img',named=false}:{event:TimelineEvent;className?:string;named?:boolean}){
   if(!event.image)return null;
   const {src,alt,width,height,video}=event.image;
-  const img=<img className={className} src={src} alt={alt} width={width} height={height} loading={named?'eager':'lazy'} decoding="async" data-ex={event.id} style={vtName(event,named)}/>;
+  const img=<img className={className} src={named?src:(thumbnailFiles as Record<string,string>)[src]??src} alt={alt} width={width} height={height} loading={named?'eager':'lazy'} decoding="async" data-ex={event.id} style={vtName(event,named)}/>;
   return video?<>{img}<span className="video-badge" aria-label="视频">▶ 视频</span></>:img;
 }
 
@@ -43,5 +44,7 @@ export function ExhibitImg({event,className='exhibit-img',named=false}:{event:Ti
 export function ExhibitVideo({event}:{event:TimelineEvent}){
   if(!event.image?.video)return null;
   const {src,video,width,height,alt}=event.image;
+  // 官方原片未附字幕；保留原片，不编造字幕轨。
+  // oxlint-disable-next-line jsx-a11y/media-has-caption
   return <video className="exhibit-img exhibit-video" src={video} poster={src} width={width} height={height} controls playsInline preload="metadata" aria-label={alt} data-ex={event.id} style={vtName(event,true)}/>;
 }
