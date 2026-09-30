@@ -73,7 +73,7 @@
 
 /* ── 各年份共用：全年刻度与"怎么看这一页"。颜色走 --yr-* 变量 ── */
 .skin{--yr-line:var(--sk-line);--yr-axis:var(--sk-muted);--yr-dot:var(--sk-muted);--yr-major:var(--sk-text);--yr-anchor:var(--sk-accent);--yr-hi:var(--sk-link);--yr-label:var(--sk-text);--yr-tip:var(--sk-side)}
-.yr{position:relative;margin:30px 0 0;padding-top:calc(var(--lanes) * 40px + 18px);text-align:left}
+.yr{position:relative;margin:30px 0 0;padding-top:calc(var(--lanes) * 40px + 18px);padding-bottom:max(6px,calc(var(--dn-lanes,0) * 40px - 1px));text-align:left}
 .yr-track{position:relative;display:grid;grid-template-columns:repeat(12,1fr);border-top:2px solid var(--yr-axis)}
 .yr-track span{padding-top:8px;border-left:1px solid var(--yr-line);font:11px var(--font-mono);color:var(--sk-muted);text-indent:6px}
 .yr-dot{position:absolute;z-index:1;top:calc(var(--lanes) * 40px + 18px);translate:-50% -50%;width:20px;height:20px;display:grid;place-items:center}
@@ -85,6 +85,9 @@
 .yr-dot b small{display:block;font:11px var(--font-mono);color:var(--sk-muted)}
 .yr-dot.major b{bottom:calc(100% + 2px + var(--lane) * 40px);opacity:1;background:none;padding:0 4px;font-size:13px;font-weight:600}
 .yr-dot.major b::after{content:'';position:absolute;left:50%;top:100%;width:1px;height:calc(var(--lane) * 40px + 2px);background:var(--yr-axis)}
+/* 下侧的名字：落到轴下方，第一层先避开月份数字再挂；连接线从名字顶上穿回点。 */
+.yr-dot.major.dn b{bottom:auto;top:calc(100% + 22px + var(--lane) * 40px)}
+.yr-dot.major.dn b::after{top:auto;bottom:100%;height:calc(var(--lane) * 40px + 22px)}
 .yr-dot.anchor b{color:var(--yr-hi)}
 .yr-dot.l b{translate:-10px 0;text-align:left}
 .yr-dot.r b{translate:calc(-100% + 10px) 0;text-align:right}
@@ -95,7 +98,7 @@
 .yr-how{max-width:44em;padding:14px 18px;text-align:left;font-size:14px;line-height:1.8;color:var(--sk-text2)}
 .yr-how a{color:var(--sk-link);text-decoration:underline;text-underline-offset:3px}
 .s2022{--yr-axis:#5a5b6a;--yr-line:#4a4b59;--yr-dot:#8e8fa1;--yr-major:#d1d1da;--yr-tip:#1f2027}
-@media(max-width:700px){.yr{--lanes:0!important;margin-top:22px}.yr-dot b{display:none}.yr-track span{text-indent:2px;font-size:10px}}
+@media(max-width:700px){.yr{--lanes:0!important;--dn-lanes:0!important;margin-top:22px}.yr-dot b{display:none}.yr-track span{text-indent:2px;font-size:10px}}
 
 /* ── 2022 · 研究预览：对话框外观 + 清楚的时间线 ── */
 .s22-app{display:grid;grid-template-columns:260px minmax(0,1fr)}

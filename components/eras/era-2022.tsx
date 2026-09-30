@@ -44,7 +44,7 @@ export default function Era2022({era,events}:EraProps){
         <p className="s22-kicker" data-ent="kicker">版本 {era.year} · 研究预览</p>
         <p className="s22-title" data-ent="title">{era.title}</p>
         <p className="s22-sub" data-ent="sub">{era.subtitle}</p>
-        <YearRuler list={list} anchor={anchor}/>
+        <YearRuler list={list} anchor={anchor} width={680}/>
         <YearHow era={era} unit="那时候的 AI 就是一个对话框，每一轮「你问 · 它答」就是一件事，" anchor={anchor} className="yr-how s22-how"/>
       </header>
       {list.map((e,i)=>{const newMonth=i===0||month(list[i-1].date)!==month(e.date);return <Fragment key={e.id}>

@@ -55,7 +55,7 @@ export default function Era2023({era,events}:EraProps){
           <span aria-hidden="true">#</span>
           <p className="s23-welcome-title" data-ent="title">欢迎来到 #{era.year}-大事记</p>
           <p className="s23-welcome-sub" data-ent="sub">{era.title}</p>
-          <YearRuler list={list} anchor={anchor}/>
+          <YearRuler list={list} anchor={anchor} width={685}/>
           <YearHow era={era} unit="AI 的新闻都在社区频道里刷屏，档案馆机器人把这一年的事一条条发出来，" anchor={anchor} className="yr-how s23-how"/>
         </div>
         {list.map((e,i)=><Fragment key={e.id}>
