@@ -1,3 +1,4 @@
-import HistoryTimeline from '@/components/history-timeline';
-import VersionSelect from '@/components/version-select';
-export default function Home(){return <main className="home"><section className="intro"><div className="intro-copy"><p className="shell-kicker">AI 怀旧服 · 2022—ONGOING</p><h1>才几年，AI 就能开<span>怀旧服</span>了？</h1><p>你还记得你第一次和 AI 讲话吗？</p></div><div className="intro-select"><p className="intro-select-label">选择版本进入 ↓</p><VersionSelect/></div></section><HistoryTimeline/></main>}
+import {events,eras} from '@/lib/museum';
+import ServerList from '@/components/server-list';
+import HashRedirect from '@/components/hash-redirect';
+export default function Home(){const years=Object.fromEntries(events.map(e=>[e.id,e.year]));return <main className="splash"><header className="splash-top"><a href="/" className="shell-brand"><strong>AI 怀旧服</strong><span>AI Museum</span></a><nav aria-label="主导航"><a href="/exhibits">全部展品</a></nav></header><div className="splash-hero"><p className="splash-kicker">2022—ONGOING · {eras.length} 个版本 · {events.length} 件展品</p><h1>才几年，AI 就能开<span>怀旧服</span>了？</h1><p className="splash-q">你还记得你第一次和 AI 讲话吗？<i aria-hidden="true"/></p></div><p className="splash-pick">选择版本进入</p><ServerList/><p className="splash-foot">精选历史节点，非完整年表 · 各年份界面为风格化重构，预设对话不连接真实模型 · 历史素材版权归各自权利人所有</p><HashRedirect years={years}/></main>}

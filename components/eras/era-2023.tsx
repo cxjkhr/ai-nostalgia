@@ -32,7 +32,7 @@ export default function Era2023({era,events}:EraProps){
   return <div className="skin s2023"><div className="s23-app">
     <nav className="s23-rail" aria-label="切换年份">
       <span className="s23-home" aria-hidden="true">档</span>
-      {eras.map(e=><a key={e.year} href={'#year-'+e.year} aria-current={e.year===era.year?'true':undefined}>{e.year.slice(2)}</a>)}
+      {eras.map(e=><a key={e.year} href={'/year/'+e.year} aria-current={e.year===era.year?'true':undefined}>{e.year.slice(2)}</a>)}
     </nav>
     <aside className="s23-channels" aria-label="频道">
       <p className="s23-server">AI 怀旧服 · {era.year}<span aria-hidden="true">⌄</span></p>
