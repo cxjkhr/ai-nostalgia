@@ -11,7 +11,7 @@ import MuseumFooter from '@/components/museum-footer';
 export function generateStaticParams(){return events.map(e=>({slug:e.id}))}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const event=events.find(e=>e.id===slug);return {title:event?event.name+' · AI 怀旧服':'展品未找到 · AI 怀旧服',description:event?.detail}}
 // 详情页按展品所属年份换皮：提问的样子跟着那一年的界面走。
-const ask:Record<Skin,(name:string,id:string)=>string>={'2022':n=>n,'2023':n=>'/查档 '+n,'2024':n=>'生成：'+n,'2025':n=>n,'2026':(_,id)=>'$ nostalgia show '+id};
+const ask:Record<Skin,(name:string,id:string)=>string>={'2022':n=>n,'2023':n=>'/查档 '+n,'2024':n=>'生成：'+n,'2025':n=>n,'2026':n=>'画一格：'+n};
 export default async function Exhibit({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;const index=events.findIndex(e=>e.id===slug);if(index<0)notFound();
  const event=events[index],previous=events[index-1],next=events[index+1];const category=categories.find(c=>c.id===event.category)!;

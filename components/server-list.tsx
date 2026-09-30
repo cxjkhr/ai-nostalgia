@@ -1,5 +1,5 @@
 import {type TimelineEvent,eras,eventsInYear} from '@/lib/museum';
-import {skinOf,skinInfo,type Skin,type Era,dotDate} from '@/components/eras/shared';
+import {skinOf,skinInfo,type Skin,type Era} from '@/components/eras/shared';
 
 // 开屏的"选服"列表：每个版本一条竖屏，里面是那一年界面的缩影（取当年真实展品）。
 function Preview({skin,era,list}:{skin:Skin;era:Era;list:TimelineEvent[]}){
@@ -35,11 +35,11 @@ function Preview({skin,era,list}:{skin:Skin;era:Era;list:TimelineEvent[]}){
       <span className="pv25-composer">给 AI 发送消息<i>↑</i></span>
     </span>;
     default:{
-      const latest=[...list].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8);
+      const colors=['#ffd23f','#ff5fa2','#2f63d6','#1fa56b'];
       return <span className="pv pv26">
-        <span className="pv26-cmd"><i>$</i> nostalgia log --live</span>
-        {latest.map(e=><span key={e.id} className={'pv26-line'+(e.incident?' alert':'')}><em>{dotDate(e.date).slice(5)}</em>{e.name}</span>)}
-        <span className="pv26-cmd"><i>$</i> <u/></span>
+        <span className="pv26-kicker">分镜本 · {era.year}</span>
+        <b className="pv26-title">{era.title}</b>
+        <span className="pv26-grid">{list.slice(0,4).map((e,k)=><span key={e.id} className="pv26-cell"><span style={{'--c':colors[k]} as React.CSSProperties}/><em>#{String(k+1).padStart(2,'0')}</em><b>{e.name}</b></span>)}</span>
       </span>;
     }
   }

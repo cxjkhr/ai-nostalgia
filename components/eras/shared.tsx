@@ -11,7 +11,7 @@ export const skinInfo:Record<Skin,{label:string;hint:string}>={
   '2023':{label:'社区频道',hint:'机器人在频道里发公告'},
   '2024':{label:'多模态',hint:'渐变、语音、会动的画面'},
   '2025':{label:'深度思考',hint:'答案之前，先想一想'},
-  '2026':{label:'现役服',hint:'终端里滚动的发布日志'},
+  '2026':{label:'手绘动画',hint:'AI 用代码一笔一笔画出来的分镜本'},
 };
 
 export type Era=(typeof eras)[number];
