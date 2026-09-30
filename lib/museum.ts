@@ -1762,6 +1762,16 @@ export const events: TimelineEvent[] = (
       source: 'https://www.anthropic.com/claude-opus-5-5',
       category: 'models',
       tier: 'minor',
+      visual: 'image',
+      image: {
+        src: '/opus-55.jpg',
+        video: '/opus-55.mp4',
+        width: 1280,
+        height: 720,
+        alt: 'Claude Opus 5.5 发布短片：一段段星球边缘般的微距画面，依次浮现 There’s more to discover，最后是 Opus 5.5 字样',
+        note: '官方发布短片 · 20 秒（封面取自片尾字幕帧）',
+        sourceUrl: 'https://x.com/claudeai/status/2102435511222890900',
+      },
     },
   ] satisfies TimelineEvent[]
 ).sort((a, b) => a.date.localeCompare(b.date));
