@@ -5,6 +5,7 @@
 
 ## 本轮（2026-09-30 夜 · 转场与动效）
 
+- 追加：页内跳转（点刻度 / 目录）平滑滚动，到达后目标展品闪一圈高亮（`:target` 动画）；2023 页跳转留出频道标题栏的高度。预览页原先页内跳转是瞬间的，已改为平滑
 - 追加：bard-fail 配上站方截取的 CNN 报道标题页截图（`bard-fail.jpg`），全站 79/80 件有图，只剩 nvidia-1t
 
 - **跨页转场**：用浏览器原生的 View Transitions（`@view-transition{navigation:auto}` + `lib/transitions.ts` 里的 head 内联脚本，在 `app/layout.tsx` 注入）
