@@ -30,6 +30,7 @@ npm run format   # oxfmt
 ```
 lib/museum.ts    全站展品的唯一数据源（events: TimelineEvent[]，约 80 条）
 lib/comments.ts  「当年评论区」数据（Record<展品id, MuseumComment[]>）
+lib/transitions.ts 页面转场脚本（head 内联，配合 globals.css 里的 View Transitions 样式）
 app/             路由：/ 开屏选服；/year/[year] 各年份页；/exhibits 全部展品；/exhibits/[slug] 详情；
                  /collections/[category] 六个分类展区；/history 重定向到 /；not-found 兜底
 components/      展示组件（server-list 开屏 / version-bar 年份顶栏 / grid / chat-window / comment-wall 等）

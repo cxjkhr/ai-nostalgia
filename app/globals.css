@@ -13,7 +13,45 @@ img{max-width:100%}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 [id^='e-']{scroll-margin-top:calc(var(--bar-h) + 12px)}
 @keyframes blink{50%{opacity:0}}
+
+/* ── 转场（跨页 View Transitions，配合 lib/transitions.ts）。不支持的浏览器直接跳转 ── */
 @view-transition{navigation:auto}
+:root{--ease-out:cubic-bezier(.2,.8,.2,1)}
+.vbar{view-transition-name:vbar}
+::view-transition-group(*){animation-duration:.5s;animation-timing-function:var(--ease-out)}
+::view-transition-old(*),::view-transition-new(*){height:100%;object-fit:contain}
+::view-transition-old(root){animation:vt-fade-out .3s ease both}
+::view-transition-new(root){animation:vt-fade-in .45s var(--ease-out) both}
+html:active-view-transition-type(forward)::view-transition-old(root){animation:vt-out-left .45s var(--ease-out) both}
+html:active-view-transition-type(forward)::view-transition-new(root){animation:vt-in-right .5s var(--ease-out) both}
+html:active-view-transition-type(back)::view-transition-old(root){animation:vt-out-right .45s var(--ease-out) both}
+html:active-view-transition-type(back)::view-transition-new(root){animation:vt-in-left .5s var(--ease-out) both}
+html:active-view-transition-type(enter)::view-transition-old(root){animation:vt-sink .6s var(--ease-out) both}
+html:active-view-transition-type(enter)::view-transition-new(root){animation:none}
+html:active-view-transition-type(detail)::view-transition-new(root){animation:vt-rise .5s var(--ease-out) both}
+::view-transition-group(vbar){animation-duration:.35s}
+@keyframes vt-fade-out{to{opacity:0}}
+@keyframes vt-fade-in{from{opacity:0}}
+@keyframes vt-out-left{to{opacity:0;transform:translateX(-6%)}}
+@keyframes vt-in-right{from{opacity:0;transform:translateX(8%)}}
+@keyframes vt-out-right{to{opacity:0;transform:translateX(6%)}}
+@keyframes vt-in-left{from{opacity:0;transform:translateX(-8%)}}
+@keyframes vt-sink{to{opacity:.35;transform:scale(.96)}}
+@keyframes vt-rise{from{opacity:0;transform:translateY(24px)}}
+
+/* ── 页面内：展品随滚动浮现（滚动驱动，已在视口里的直接完整显示）；详情页依次入场 ── */
+@keyframes rise-in{from{opacity:0;transform:translateY(22px)}}
+@supports (animation-timeline:view()){
+  .s22-turn,.s23-msg,.s24-card,.s24-month,.s25-turn,.s26-panel,.xcard,.handoff>a{animation:rise-in linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+}
+.dx-head,.dx-q,.dx-a-body>*,.dx-pager,.dx-comments{animation:rise-in .6s var(--ease-out) both}
+.dx-q{animation-delay:.08s}
+.dx-a-body>:nth-child(1){animation-delay:.14s}
+.dx-a-body>:nth-child(2){animation-delay:.19s}
+.dx-a-body>:nth-child(3){animation-delay:.24s}
+.dx-a-body>:nth-child(n+4){animation-delay:.29s}
+.dx-pager,.dx-comments{animation-delay:.34s}
+.dx-figure{animation:none}
 
 /* 页头（列表页） */
 .shell-header{background:var(--shell-bg);border-bottom:1px solid var(--shell-line)}
@@ -266,4 +304,4 @@ img{max-width:100%}
 .comment-likes{grid-column:2;padding-top:0}
 .shell-colophon{flex-wrap:wrap;gap:6px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}

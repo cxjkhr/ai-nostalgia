@@ -1,9 +1,22 @@
 # STATUS — 进度与交接
 
 > 本文件记录"当前做到哪、接下来做什么"。每次会话结束前更新；新会话先读这里再干活。
-> 最后更新：2026-09-30 夜（**补三张站方供图，75/80 件有图；修正 chatgpt-1m 文案**，在分支 `redesign/era-skins`，待站方本地验收后合并）
+> 最后更新：2026-09-30 夜（**加页面转场与动效**，在分支 `redesign/era-skins`，待站方本地验收后合并）
 
-## 本轮（2026-09-30 夜 · 来源链接体检）
+## 本轮（2026-09-30 夜 · 转场与动效）
+
+- **跨页转场**：用浏览器原生的 View Transitions（`@view-transition{navigation:auto}` + `lib/transitions.ts` 里的 head 内联脚本，在 `app/layout.tsx` 注入）
+  - 开屏点版本：年份页从被点的卡片位置展开（clip-path 动画），开屏同时下沉变暗
+  - 年份之间：按年份先后左右滑（`forward` / `back` 两种转场类型）
+  - 缩略图 → 详情：那张图飞到详情页大图位置，其余内容上浮淡入；从详情页回年份页时图飞回缩略图
+  - 顶栏 `.vbar` 单独命名，切页时不闪
+  - 只给本次要飞的那张图临时起名（`data-ex` 找图），详情页主图固定起名 `ex-<id>`；避免一页几十张图全被截图
+  - 不支持的浏览器（无 `pagereveal`）照常跳转；系统开了"减少动态效果"时全部关闭
+- **页面内**：展品卡片随滚动浮现（滚动驱动动画，不支持的浏览器直接显示）；详情页标题、正文、翻页依次入场，主图不做入场动画（留给飞入效果）
+- 已在 Chromium 里真实点击验证：五种转场都触发、类型正确、结束无报错
+- 预览页（单页 hash 路由）用同文档 `startViewTransition` 复刻同样的效果
+
+## 上一轮（2026-09-30 夜 · 来源链接体检）
 
 - 站方反馈两条来源打不开，顺势把 80 条来源 + 图片出处逐条用 WebFetch 打开核对：
   - **失效已修（改为能打开且内容对得上的链接）**：chatgpt-100m（路透路径写错 → Euronews 转载）、bard-fail（路透路径写错 → CNN 当天报道，detail 同步更正）、lensa（prisma 页 404 → TechCrunch 2022-12-05 报道）、openai-devday（→ new-models-and-developer-products-announced-at-devday）、computer-use（→ 3-5-models-and-computer-use）、chatgpt-search（→ introducing-chatgpt-search）、openai-12days（→ openai.com/12-days/）；README 里引用这些旧链接的地方一并更新
@@ -151,6 +164,7 @@
 
 ## 已完成（按提交倒序）
 
+- （分支 `redesign/era-skins`）页面转场与动效，未合并
 - （分支 `redesign/era-skins`）来源链接体检：修 7 条失效链接，chatgpt-100m 配图，未合并
 - （分支 `redesign/era-skins`）三张站方供图入库，修正 chatgpt-1m 文案，未合并
 - （分支 `redesign/era-skins`）2026 补 Muse / Jev / Opus 5.5，未合并

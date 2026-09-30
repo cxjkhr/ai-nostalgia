@@ -30,10 +30,12 @@ export function yearProgress(date:string){
 }
 
 // 展品图：一律完整显示（contain），不裁切官方横幅和论文插图。有视频的展品在缩略图上标一个"视频"角标。
-export function ExhibitImg({event,className='exhibit-img'}:{event:TimelineEvent;className?:string}){
+// data-ex 给转场脚本找图用；named 表示这是详情页的主图，固定起转场名，缩略图飞进来时落在它上面。
+const vtName=(event:TimelineEvent,named:boolean)=>named?{viewTransitionName:'ex-'+event.id}:undefined;
+export function ExhibitImg({event,className='exhibit-img',named=false}:{event:TimelineEvent;className?:string;named?:boolean}){
   if(!event.image)return null;
   const {src,alt,width,height,video}=event.image;
-  const img=<img className={className} src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async"/>;
+  const img=<img className={className} src={src} alt={alt} width={width} height={height} loading={named?'eager':'lazy'} decoding="async" data-ex={event.id} style={vtName(event,named)}/>;
   return video?<>{img}<span className="video-badge" aria-label="视频">▶ 视频</span></>:img;
 }
 
@@ -41,5 +43,5 @@ export function ExhibitImg({event,className='exhibit-img'}:{event:TimelineEvent;
 export function ExhibitVideo({event}:{event:TimelineEvent}){
   if(!event.image?.video)return null;
   const {src,video,width,height,alt}=event.image;
-  return <video className="exhibit-img exhibit-video" src={video} poster={src} width={width} height={height} controls playsInline preload="metadata" aria-label={alt}/>;
+  return <video className="exhibit-img exhibit-video" src={video} poster={src} width={width} height={height} controls playsInline preload="metadata" aria-label={alt} data-ex={event.id} style={vtName(event,true)}/>;
 }
