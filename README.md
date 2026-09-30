@@ -147,3 +147,4 @@ public/typesafe-jev.jpg 为「typesafe-jev」展品配图：打孔卡与专利�
 public/opus-55.mp4 为「opus-55」展品视频：Claude 官方账号在 X 发布的 Opus 5.5 发布短片（20 秒），站方下载供片，收录时转码为 1280×720、H.264 + AAC（约 4.7MB）。原帖：https://x.com/claudeai/status/2102435511222890900
 public/opus-55.jpg 为上述短片的封面帧，取自 17 秒处的「Opus 5.5」字幕画面。
 public/chatgpt-100m.jpg 为「chatgpt-100m」展品配图：路透社 2023-02-01 报道《ChatGPT sets record for fastest-growing user base - analyst note》标题与配图的截图，站方截取（PNG 转 JPG 收录，配图版权 Thomson Reuters）。转载页：https://finance.yahoo.com/news/chatgpt-sets-record-fastest-growing-190911828.html
+public/bard-fail.jpg 为「bard-fail」展品配图：CNN 2023-02-08 报道《Google shares lose $100 billion after company’s AI chatbot makes an error during demo》标题页截图，站方截取（PNG 转 JPG 收录）；页面内配图为同期微软 Bing 发布会视频封面，版权归 CNN 及原权利人。原页：https://www.cnn.com/2023/02/08/tech/google-ai-bard-demo-error

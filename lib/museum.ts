@@ -328,6 +328,15 @@ export const events: TimelineEvent[] = (
       source: 'https://www.cnn.com/2023/02/08/tech/google-ai-bard-demo-error',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/bard-fail.jpg',
+        width: 1795,
+        height: 870,
+        alt: 'CNN 报道《Google shares lose $100 billion after company’s AI chatbot makes an error during demo》的标题页截图',
+        note: 'CNN 报道页截图 · 2023-02-08（页面配图为同期微软 Bing 发布会）',
+        sourceUrl: 'https://www.cnn.com/2023/02/08/tech/google-ai-bard-demo-error',
+      },
     },
     {
       id: 'llama-leak',

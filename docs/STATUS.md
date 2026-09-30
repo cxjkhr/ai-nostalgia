@@ -5,6 +5,8 @@
 
 ## 本轮（2026-09-30 夜 · 转场与动效）
 
+- 追加：bard-fail 配上站方截取的 CNN 报道标题页截图（`bard-fail.jpg`），全站 79/80 件有图，只剩 nvidia-1t
+
 - **跨页转场**：用浏览器原生的 View Transitions（`@view-transition{navigation:auto}` + `lib/transitions.ts` 里的 head 内联脚本，在 `app/layout.tsx` 注入）
   - 开屏点版本：年份页从被点的卡片位置展开（clip-path 动画），开屏同时下沉变暗
   - 年份之间：按年份先后左右滑（`forward` / `back` 两种转场类型）
@@ -35,7 +37,7 @@
 - `chatgpt-100m` 配上站方截取的路透报道页截图（`chatgpt-100m.jpg`）
 - `bard-fail` 来源同样失效（路透链接路径是错的），换成 CNN 当天报道 https://www.cnn.com/2023/02/08/tech/google-ai-bard-demo-error ；detail 顺带更正：错误出现在谷歌推特上的演示里（不是"首支演示视频"），内容是把第一张系外行星照片归给韦布望远镜，市值蒸发约 1000 亿美元
 - opus-55 已接上站方下载的官方发布短片（@claudeai 原帖），转码为 720p 约 4.7MB（原片 1080p 13MB），封面取 17 秒处「Opus 5.5」字幕帧；全站第一件带视频的展品
-- 无图展品现为 2 个：bard-fail、nvidia-1t（ChatGPT 展品本身用对话框演示，不算缺图）
+- 无图展品现为 1 个：nvidia-1t（ChatGPT 展品本身用对话框演示，不算缺图）
 
 ## 上一轮（2026-09-30 夜 · 2026 补三件新展品）
 
