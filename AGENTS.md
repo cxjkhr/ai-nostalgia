@@ -33,7 +33,7 @@ lib/comments.ts  「当年评论区」数据（Record<展品id, MuseumComment[]>
 app/             路由：/ 开屏选服；/year/[year] 各年份页；/exhibits 全部展品；/exhibits/[slug] 详情；
                  /collections/[category] 六个分类展区；/history 重定向到 /；not-found 兜底
 components/      展示组件（server-list 开屏 / version-bar 年份顶栏 / grid / chat-window / comment-wall 等）
-components/eras/ 五套年份皮肤；shared.tsx 放皮肤名、日期工具和展品图组件
+components/eras/ 五套年份皮肤；shared.tsx 放皮肤名、日期工具和展品图组件；timeline.tsx 放各年共用的全年刻度、开篇说明、按日期排序和缩略图
 app/eras.css     年份皮肤样式、皮肤变量、开屏缩影；app/globals.css 放深色外壳和通用部分
 public/          静态资源（图片需登记来源，见下）
 ```

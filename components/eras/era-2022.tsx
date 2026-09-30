@@ -1,22 +1,12 @@
 import {Fragment,type ReactNode} from 'react';
 import {type TimelineEvent} from '@/lib/museum';
-import {type EraProps,exhibitHref,anchorId,monthDay,yearProgress,categoryName,ExhibitImg} from '@/components/eras/shared';
+import {type EraProps,exhibitHref,anchorId,monthDay,categoryName,ExhibitImg} from '@/components/eras/shared';
+import {chronological,YearRuler,YearHow} from '@/components/eras/timeline';
 import ScrollSpy from '@/components/scroll-spy';
 
 // 2022：研究预览时代的对话框。保留灰底、整行一问一答交替；
 // 在它上面加一条清楚的时间线：开篇说明 + 全年刻度，左侧日期竖线，按月分段，侧栏是按月的目录。
 const month=(d:string)=>Number(d.slice(5,7));
-
-// 全年刻度：点都落在轴上；重要节点的名字立在点上方，靠得太近的名字往上错开一层。
-function marks(list:TimelineEvent[]){
-  const last:number[]=[];
-  return list.map(e=>{
-    const x=yearProgress(e.date);
-    if(e.tier!=='major')return {e,x,lane:-1};
-    let lane=0;while(last[lane]!==undefined&&x-last[lane]<16)lane++;last[lane]=x;
-    return {e,x,lane};
-  });
-}
 
 // 时间线上的缩略图：点图和点"查看展品"一样，进详情页。没有可考原图的展品不放图。
 function Thumb({e}:{e:TimelineEvent}){
@@ -38,8 +28,7 @@ function Row({who,children,gutter}:{who:'user'|'bot';children:ReactNode;gutter?:
 }
 
 export default function Era2022({era,events}:EraProps){
-  const list=[...events].sort((a,b)=>a.date.localeCompare(b.date));
-  const anchor=events[0];
+  const {list,anchor}=chronological(events);
   const months=[...new Set(list.map(e=>month(e.date)))];
   return <div className="skin s2022"><ScrollSpy links=".s2022 [data-spy]"/><div className="s22-app">
     <aside className="s22-side" aria-label={era.year+' 年时间线目录'}>
@@ -55,11 +44,8 @@ export default function Era2022({era,events}:EraProps){
         <p className="s22-kicker">版本 {era.year} · 研究预览</p>
         <p className="s22-title">{era.title}</p>
         <p className="s22-sub">{era.subtitle}</p>
-        {(()=>{const m=marks(list),n=Math.max(0,...m.map(k=>k.lane))+1;return <div className="s22-ruler" style={{'--lanes':n} as React.CSSProperties}>
-          {m.map(({e,x,lane})=><a key={e.id} href={'#'+anchorId(e)} data-spy={anchorId(e)} className={'s22-dot'+(lane>=0?' major':'')+(e.id===anchor?.id?' anchor':'')} style={{left:x+'%','--lane':Math.max(lane,0)} as React.CSSProperties}><i aria-hidden="true"/><b>{e.name}<small>{monthDay(e.date)}</small></b></a>)}
-          <div className="s22-ruler-track" aria-hidden="true">{Array.from({length:12},(_,i)=><span key={i}>{i+1}月</span>)}</div>
-        </div>})()}
-        <p className="s22-how">这一页是 {era.year} 年的样子：那时候的 AI 就是一个对话框。下面每一轮「你问 · 它答」就是这一年的一件事，按时间从上往下排，左边是日期；大一点的点是重要节点，{anchor&&<>最重要的是 <a href={'#'+anchorId(anchor)}>{anchor.name}（{monthDay(anchor.date)}）</a></>}。</p>
+        <YearRuler list={list} anchor={anchor}/>
+        <YearHow era={era} unit="那时候的 AI 就是一个对话框，每一轮「你问 · 它答」就是一件事，" anchor={anchor} className="yr-how s22-how"/>
       </header>
       {list.map((e,i)=>{const newMonth=i===0||month(list[i-1].date)!==month(e.date);return <Fragment key={e.id}>
         {newMonth&&<div className="s22-month"><div className="s22-inner"><div className="s22-gutter"><strong>{month(e.date)} 月</strong></div><span/></div></div>}
