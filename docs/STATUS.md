@@ -1,9 +1,16 @@
 # STATUS — 进度与交接
 
 > 本文件记录"当前做到哪、接下来做什么"。每次会话结束前更新；新会话先读这里再干活。
-> 最后更新：2026-09-30 夜（**2026 补 Muse / Jev / Opus 5.5 三件展品，共 80 件**，在分支 `redesign/era-skins`，待站方本地验收后合并）
+> 最后更新：2026-09-30 夜（**补三张站方供图，75/80 件有图；修正 chatgpt-1m 文案**，在分支 `redesign/era-skins`，待站方本地验收后合并）
 
-## 本轮（2026-09-30 夜 · 2026 补三件新展品）
+## 本轮（2026-09-30 夜 · 站方供图三张 + 修正百万用户文案）
+
+- `chatgpt-1m` 文案修正：原写"Altman 在社交媒体晒出增长曲线"不实，原帖只有一句文字；改为引用原帖「ChatGPT 周三上线，今天用户突破 100 万了！」，来源从维基百科换成原帖 https://x.com/sama/status/1599668808285028353 （已用 Techmeme 2022-12-05 存档核对）
+- 三张站方供图入库（README「历史图片」第四批已登记）：`chatgpt-1m.png`（Altman 原帖截图）、`meta-muse.jpg`（发布会 Muse 购物功能演示）、`typesafe-jev.jpg`（打孔卡与专利图拼贴）；后两张 PNG 转 JPG 压缩
+- **待站方补**：meta-muse、typesafe-jev 两张图的原始出处链接（README 里标了"待站方补充"）；opus-55 还缺图
+- 无图展品现为 4 个：chatgpt-100m、bard-fail、nvidia-1t、opus-55（ChatGPT 展品本身用对话框演示，不算缺图）
+
+## 上一轮（2026-09-30 夜 · 2026 补三件新展品）
 
 - 站方提出补 9 月爆火的三件，均已查一手来源后录入 `lib/museum.ts`（全站 77 → 80 件）：
   - `meta-muse` 2026-09-08 Meta Muse（agents / major）——来源 TechCrunch 9/25 增长报道（上线两周约 280 万下载、登顶美国双商店）；Meta 官方公告 https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
@@ -130,6 +137,7 @@
 
 ## 已完成（按提交倒序）
 
+- （分支 `redesign/era-skins`）三张站方供图入库，修正 chatgpt-1m 文案，未合并
 - （分支 `redesign/era-skins`）2026 补 Muse / Jev / Opus 5.5，未合并
 - （分支 `redesign/era-skins`）2026 换成手绘动画风，未合并
 - （分支 `redesign/era-skins`）五个年份页统一时间线结构与缩略图，未合并

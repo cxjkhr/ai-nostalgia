@@ -210,10 +210,19 @@ export const events: TimelineEvent[] = (
       tag: '现象时刻',
       line: '一个网址，五天，一百万人。',
       detail:
-        '上线五天用户破百万，Altman 在社交媒体晒出增长曲线；“增长最快的消费级应用”的叙事由此改写。',
-      source: 'https://en.wikipedia.org/wiki/ChatGPT',
+        '上线五天用户破百万，Altman 发帖：「ChatGPT 周三上线，今天用户突破 100 万了！」“增长最快的消费级应用”的叙事由此改写。',
+      source: 'https://x.com/sama/status/1599668808285028353',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/chatgpt-1m.png',
+        width: 760,
+        height: 354,
+        alt: 'Sam Altman 2022 年 12 月 5 日的推文：ChatGPT launched on wednesday. today it crossed 1 million users! 下方是马斯克的回复',
+        note: 'Altman 宣布破百万的原帖 · 2022-12-05',
+        sourceUrl: 'https://x.com/sama/status/1599668808285028353',
+      },
     },
     // ── 2023 ──────────────────────────────────────────────
     {
@@ -1707,6 +1716,14 @@ export const events: TimelineEvent[] = (
       source: 'https://techcrunch.com/2026/09/25/meta-is-putting-its-muscle-behind-muse-as-the-ai-app-takes-off/',
       category: 'agents',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/meta-muse.jpg',
+        width: 900,
+        height: 449,
+        alt: 'Meta 发布会舞台上，演讲者介绍 Muse 的购物功能，大屏上是几家支付与购物应用的图标',
+        note: 'Muse 购物功能演示 · 发布会现场（站方供图）',
+      },
     },
     {
       id: 'typesafe-jev',
@@ -1720,6 +1737,14 @@ export const events: TimelineEvent[] = (
       source: 'https://typesafe.ai/blog/introducing-system-one-models-and-jev',
       category: 'models',
       tier: 'major',
+      visual: 'image',
+      image: {
+        src: '/typesafe-jev.jpg',
+        width: 1230,
+        height: 1008,
+        alt: '拼贴插画：青绿色打孔卡叠在机械专利图和戴眼镜的人头线稿上',
+        note: '打孔卡与专利图拼贴 · Jev 发布配图（站方供图）',
+      },
     },
     {
       id: 'opus-55',

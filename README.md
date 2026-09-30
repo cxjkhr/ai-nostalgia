@@ -138,3 +138,8 @@ public/kimi-k3.png 为「kimi-k3」展品配图：官方仓库卡。来源：htt
 public/deepseek-v4-pro.jpg 为「deepseek-v4-pro」展品配图：官方品牌卡。来源：https://api-docs.deepseek.com/zh-cn/news/news260813/
 public/gemini-38.png 为「gemini-38」展品配图：官方头图。来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/
 public/ai-outage.png 为「ai-outage」展品配图：报道配图（21财经，尺寸较小）。来源：https://m.21jingji.com/article/20260904/herald/4b1de4e859674d1b41efdd1ccbbe4c00_zaker.html
+
+—— 以下为 2026-09-30 第四批收录（站方供图）——
+public/chatgpt-1m.png 为「chatgpt-1m」展品配图：Sam Altman 2022-12-05 推文截图（含马斯克回复），站方截取。原帖：https://x.com/sama/status/1599668808285028353
+public/meta-muse.jpg 为「meta-muse」展品配图：Meta 发布会上 Muse 购物功能演示的现场画面，站方供图，原始出处待站方补充（PNG 转 JPG 收录）。
+public/typesafe-jev.jpg 为「typesafe-jev」展品配图：打孔卡与专利图拼贴插画，站方供图，原始出处待站方补充（PNG 转 JPG 收录）。
