@@ -18,6 +18,17 @@ function marks(list:TimelineEvent[]){
   });
 }
 
+// 时间线上的缩略图：点图和点"查看展品"一样，进详情页。没有可考原图的展品不放图。
+function Thumb({e}:{e:TimelineEvent}){
+  if(e.visual==='image'&&e.image)return <a className="s22-thumb" href={exhibitHref(e)} aria-label={'查看展品：'+e.name}><ExhibitImg event={e}/><span aria-hidden="true">查看展品 →</span></a>;
+  if(e.visual==='chat')return <a className="s22-thumb chat" href={exhibitHref(e)} aria-label={'查看展品：'+e.name}>
+    <span className="s22-mini user"><i>你</i>用简单的话解释什么是人工智能</span>
+    <span className="s22-mini bot"><i>✳</i>可以把人工智能想象成一个从大量例子中学习的助手……</span>
+    <span aria-hidden="true">查看展品 →</span>
+  </a>;
+  return null;
+}
+
 function Row({who,children,gutter}:{who:'user'|'bot';children:ReactNode;gutter?:ReactNode}){
   return <div className={'s22-row '+who}><div className="s22-inner">
     <div className="s22-gutter">{gutter}</div>
@@ -56,12 +67,14 @@ export default function Era2022({era,events}:EraProps){
           <Row who="user" gutter={<><time dateTime={e.date}>{monthDay(e.date)}</time><small>{e.tag}</small></>}>
             <span className="s22-q">{e.name}</span>{e.id===anchor?.id&&<span className="s22-badge">本年主展品</span>}
           </Row>
-          <Row who="bot">
-            <p className="s22-lead">{e.line}</p>
-            {e.tier==='major'&&<p>{e.detail}</p>}
-            {e.tier==='major'&&e.visual==='image'&&<a className="s22-media" href={exhibitHref(e)}><ExhibitImg event={e}/></a>}
-            <p className="s22-meta"><span>{categoryName(e.category)}</span><a href={exhibitHref(e)}>查看展品 →</a></p>
-          </Row>
+          <Row who="bot"><div className="s22-answer">
+            <div className="s22-text">
+              <p className="s22-lead">{e.line}</p>
+              {e.tier==='major'&&<p>{e.detail}</p>}
+              <p className="s22-meta"><span>{categoryName(e.category)}</span><a href={exhibitHref(e)}>查看展品 →</a></p>
+            </div>
+            <Thumb e={e}/>
+          </div></Row>
         </section>
       </Fragment>})}
       <div className="s22-dock">
