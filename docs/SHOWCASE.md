@@ -22,7 +22,9 @@
 
 ## 交互作品边界
 
-交互组件保留：iframe 仅 `sandbox="allow-scripts"`，不开放 same-origin、弹窗、表单、顶层导航。当前未收录交互作品。
+交互组件保留：iframe 仅 `sandbox="allow-scripts"`，不开放 same-origin、弹窗、表单、顶层导航。当前收录一件交互作品：Opus 5 官方风洞演示（assets.claude.ai，2026-10-02 经站内沙箱实测可运行）。
+
+2026-10-02 实测记录：B 站播放器（player.bilibili.com）在无 same-origin 的沙箱内黑屏，不可内嵌；Opus 5 官方 artifact 中风洞可运行、细胞剖面不可运行——同源演示也需逐件实测，不能凭「官方出品」推定。
 
 2026-09-30 按馆主要求撤下赛车，移除站内原始副本、展示副本、说明与哈希文件。桌面原作品未动。新作品仍需逐件核对可运行性与来源，不向作品传递站点凭据，不开放 allow-same-origin。
 
