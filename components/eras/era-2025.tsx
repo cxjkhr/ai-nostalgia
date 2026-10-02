@@ -32,7 +32,7 @@ export default function Era2025({era,events}:EraProps){
   return <div className="skin s2025"><ScrollSpy links=".s2025 [data-spy]"/><div className="s25-col">
     <div className="s25-greet"><span className="s25-mark" aria-hidden="true"/><p className="s25-title" data-ent="title">{era.title}</p><p data-ent="sub">{era.subtitle}</p>
       <YearRuler list={list} anchor={anchor} width={770}/>
-      <YearHow era={era} unit="AI 学会了先想再答，每一轮问答是一件重要的事，零碎的新闻收在待办清单里，" anchor={anchor} className="yr-how s25-how"/>
+      <YearHow unit="AI 学会了推理，视频也有了声音。" className="yr-how s25-how"/>
     </div>
     {toBlocks(list).map((b,i)=>b.kind==='major'
       ?<div className={'s25-turn flow-wait'+(b.e.id===anchor?.id?' anchor':'')} key={b.e.id} id={anchorId(b.e)}>

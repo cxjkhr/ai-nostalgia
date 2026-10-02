@@ -87,6 +87,9 @@
 .yr-dot.major b::after{content:'';position:absolute;left:50%;top:100%;width:1px;height:calc(var(--lane) * 40px + 2px);background:var(--yr-axis)}
 /* 下侧的名字：落到轴下方，第一层先避开月份数字再挂；连接线从名字顶上穿回点。 */
 .yr-dot.major.dn b{bottom:auto;top:calc(100% + 22px + var(--lane) * 40px)}
+/* 密集年份（>12 件）：刻度名牌全部转悬停显示，点仍可点、仍参与滚动高亮 */
+.yr.dense .yr-dot.major b{opacity:0}
+.yr.dense .yr-dot.major:hover b,.yr.dense .yr-dot.major:focus-visible b{opacity:1;z-index:2}
 .yr-dot.major.dn b::after{top:auto;bottom:100%;height:calc(var(--lane) * 40px + 22px)}
 .yr-dot.anchor b{color:var(--yr-hi)}
 .yr-dot.l b{translate:-10px 0;text-align:left}

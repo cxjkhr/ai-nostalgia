@@ -24,7 +24,7 @@ export default function Era2024({era,events}:EraProps){
       <p className="s24-sub" data-ent="sub">{era.subtitle}</p>
       <div className="s24-prompt" data-ent="sub" aria-hidden="true"><span>＋</span><span className="s24-prompt-text">描述你想看到的画面……</span><span className="s24-voice">按住说话</span><span className="s24-go">↑</span></div>
       <div className="s24-ruler"><YearRuler list={list} anchor={anchor} width={940}/></div>
-      <YearHow era={era} unit="文字之外，AI 开始生成画面和声音，每张卡片就是一件事，大卡片是重要节点，" anchor={anchor} className="yr-how s24-how"/>
+      <YearHow unit="这些 AI 视频，还可以分辨出真假。" className="yr-how s24-how"/>
     </div>
     <div className="s24-timeline">{months.map(m=><section key={m} className="s24-mrow" aria-label={m+' 月'}>
       <p className="s24-month flow-wait"><span>{m} 月</span></p>

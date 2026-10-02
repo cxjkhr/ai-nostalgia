@@ -111,6 +111,19 @@ html:active-view-transition-type(detail)::view-transition-new(root){animation:vt
 .servers{list-style:none;flex:1;width:100%;max-width:1440px;min-height:460px;margin:0 auto;padding:0 32px;display:flex;gap:10px}
 .servers>li{flex:1 1 0;min-width:0;display:flex;transition:flex-grow .55s cubic-bezier(.2,.8,.2,1);animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 90ms + 120ms)}
 .servers>li:hover,.servers>li:focus-within{flex-grow:1.9}
+/* 开屏两段式：标题画面 → 「选择服务器」展开版本列表（纯 CSS，无 JS 也可用） */
+.srv-toggle{position:fixed;opacity:0;pointer-events:none}
+.sp{flex:1 1 0;transition:flex-grow .5s cubic-bezier(.2,.8,.2,1)}
+#server-toggle:checked~.sp{flex-grow:0}
+.splash-enter-btn{display:flex;width:fit-content;align-items:center;gap:10px;margin:26px auto 0;padding:15px 40px;border:1px solid var(--shell-line);border-radius:999px;background:var(--shell-bg-2);color:var(--shell-fg);font:600 15px var(--font-sans);letter-spacing:.18em;cursor:pointer;transition:border-color .25s,color .25s,transform .25s;animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:160ms}
+.splash-enter-btn i{font-style:normal;font-size:12px;color:var(--shell-fg-3);transition:transform .25s}
+.splash-enter-btn:hover{border-color:var(--shell-accent);color:var(--shell-accent);transform:translateY(-1px)}
+.splash-enter-btn:hover i{transform:translateY(2px)}
+#server-toggle:focus-visible~.splash-enter-btn{outline:2px solid var(--focus,var(--shell-accent));outline-offset:3px}
+.splash-pick,.servers{display:none}
+#server-toggle:checked~.splash-enter-btn{display:none}
+#server-toggle:checked~.splash-pick{display:block;animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+#server-toggle:checked~.servers{display:flex}
 @keyframes rise{from{transform:translateY(48px);opacity:.3}}
 .server{position:relative;flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--sk-line);border-radius:16px;box-shadow:0 24px 60px #0006;transition:border-color .3s,box-shadow .3s}
 .server:hover,.server:focus-visible{border-color:var(--sk-accent);box-shadow:0 30px 80px #000a}

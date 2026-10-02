@@ -58,7 +58,7 @@ export default function Era2026({era,events}:EraProps){
         <Doodle/>
       </header>
       <YearRuler list={list} anchor={anchor} width={940}/>
-      <YearHow era={era} unit="这一年 AI 开始用代码一笔一笔画动画，整页是一本分镜本，每一格是一件事，编号就是先后顺序，同一个月是同一场戏，" anchor={anchor} className="yr-how s26-how"/>
+      <YearHow unit="AI 全面聚焦 Coding，甚至学会了做视频。" className="yr-how s26-how"/>
       <ol className="s26-panels">{list.map((e,i)=><Panel key={e.id} e={e} no={i+1} scene={months.indexOf(monthOf(e.date))+1} anchor={e.id===anchor?.id}/>)}</ol>
       <p className="s26-end"><span>编者手记</span>{era.note}</p>
     </div>

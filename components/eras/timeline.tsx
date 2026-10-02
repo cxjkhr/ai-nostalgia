@@ -1,5 +1,5 @@
 import {type TimelineEvent} from '@/lib/museum';
-import {type Era,anchorId,monthDay,yearProgress,exhibitHref,ExhibitImg} from '@/components/eras/shared';
+import {anchorId,monthDay,yearProgress,exhibitHref,ExhibitImg} from '@/components/eras/shared';
 
 // 每个年份页共用的时间线部件：全年刻度、"怎么看这一页"、按日期排序、缩略图。
 // 配色由各年皮肤的 --yr-* 变量决定（见 eras.css）。
@@ -36,18 +36,21 @@ function marks(list:TimelineEvent[],width:number){
 }
 
 export function YearRuler({list,anchor,width=900}:{list:TimelineEvent[];anchor?:TimelineEvent;width?:number}){
+  // 密集年份（>12 件）刻度只留点，名字全部转为悬停显示——常驻名牌会糊成一片。
+  const dense=list.length>12;
   const m=marks(list,width);
-  const n=Math.max(0,...m.map(k=>k.side===0?k.lane:-1))+1;   // 上侧层数
-  const dn=Math.max(0,...m.map(k=>k.side===1?k.lane:-1))+1;  // 下侧层数
-  return <div className="yr" data-ent="ruler" style={{'--lanes':n,'--dn-lanes':dn} as React.CSSProperties}>
-    {m.map(({e,x,lane,side,edge})=><a key={e.id} href={'#'+anchorId(e)} aria-label={e.name+' · '+monthDay(e.date)} data-spy={anchorId(e)} className={'yr-dot'+(lane>=0?' major':'')+(side===1?' dn':'')+(edge?' '+edge:'')+(e.id===anchor?.id?' anchor':'')} style={{left:x+'%','--x':Math.round(x),'--lane':Math.max(lane,0)} as React.CSSProperties}><i aria-hidden="true"/><b>{e.name}<small>{monthDay(e.date)}</small></b></a>)}
+  const n=dense?0:Math.max(0,...m.map(k=>k.side===0?k.lane:-1))+1;   // 上侧层数
+  const dn=dense?0:Math.max(0,...m.map(k=>k.side===1?k.lane:-1))+1;  // 下侧层数
+  return <div className={'yr'+(dense?' dense':'')} data-ent="ruler" style={{'--lanes':n,'--dn-lanes':dn} as React.CSSProperties}>
+    {m.map(({e,x,lane,side,edge})=><a key={e.id} href={'#'+anchorId(e)} aria-label={e.name+' · '+monthDay(e.date)} data-spy={anchorId(e)} className={'yr-dot'+(lane>=0?' major':'')+(side===1?' dn':'')+(edge?' '+edge:'')+(e.id===anchor?.id?' anchor':'')} style={{left:x+'%','--x':Math.round(x),'--lane':dense?0:Math.max(lane,0)} as React.CSSProperties}><i aria-hidden="true"/><b>{e.name}<small>{monthDay(e.date)}</small></b></a>)}
     <div className="yr-track" aria-hidden="true">{Array.from({length:12},(_,i)=><span key={i}>{i+1}月</span>)}</div>
   </div>;
 }
 
-// "怎么看这一页"：先说这一年的界面长什么样，再说怎么读。
-export function YearHow({era,unit,anchor,className='yr-how'}:{era:Era;unit:string;anchor?:TimelineEvent;className?:string}){
-  return <p className={className} data-ent="how">这一页是 {era.year} 年的样子：{unit}按时间从上往下排，上面刻度里大一点的点是重要节点{anchor&&<>，最重要的是 <a href={'#'+anchorId(anchor)}>{anchor.name}（{monthDay(anchor.date)}）</a></>}。点图片或「查看展品」进入详情。</p>;
+// "怎么看这一页"：每年只留一句皮肤解码说明；交互提示靠刻度上方的
+// 「按时间顺序 · 点任意一条跳过去」，重要性靠列表里的「本年主展品」徽标。
+export function YearHow({unit,className='yr-how'}:{unit:string;className?:string}){
+  return <p className={className} data-ent="how">{unit}</p>;
 }
 
 // 可点的缩略图：点图和点"查看展品"一样进详情页；没有可考原图的展品不放。
