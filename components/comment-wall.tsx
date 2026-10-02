@@ -3,19 +3,33 @@
 import { useState } from 'react';
 import { comments, realSources, countComments, type MuseumComment } from '@/lib/comments';
 
-// 楼层化名池：渲染时按 深度优先（主楼→楼中楼→下一主楼）顺序自动分配
+// 楼层化名池：渲染时按 深度优先（主楼→楼中楼→下一主楼）顺序自动分配。
+// 三个字母轮次共 78 个不重名；再超出则第二轮起带编号（Alice 2、Bob 2…），不出现「访客」。
 const NAMES = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve', 'Frank', 'Grace', 'Helen',
   'Ivan', 'Judy', 'Kevin', 'Luna', 'Mona', 'Nathan', 'Olivia', 'Peter',
-  'Quinn', 'Rita', 'Sam', 'Tina', 'Uma', 'Victor', 'Wendy', 'Xavier', 'Yuki', 'Zoe'];
+  'Quinn', 'Rita', 'Sam', 'Tina', 'Uma', 'Victor', 'Wendy', 'Xavier', 'Yuki', 'Zoe',
+  'Aaron', 'Bella', 'Cody', 'Daisy', 'Elsa', 'Felix', 'Gina', 'Henry',
+  'Iris', 'James', 'Kate', 'Leo', 'Mia', 'Noah', 'Olive', 'Paul',
+  'Quentin', 'Ruby', 'Stella', 'Tom', 'Ulysses', 'Vera', 'Walter', 'Xena', 'Yusuf', 'Zara',
+  'Amber', 'Benji', 'Clara', 'Danny', 'Emily', 'Finn', 'Giselle', 'Hugo',
+  'Isla', 'Jack', 'Kara', 'Liam', 'Molly', 'Nina', 'Owen', 'Pia',
+  'Quincy', 'Rose', 'Silas', 'Tara', 'Ulric', 'Vicky', 'Wes', 'Ximena', 'Yara', 'Zeke'];
 
 function withFloorNames(list: MuseumComment[]): MuseumComment[] {
   let i = 0;
-  const walk = (items: MuseumComment[]): MuseumComment[] =>
-    items.map((c) => ({
-      ...c,
-      name: NAMES[i] ? NAMES[i++] : '访客 ' + (++i),
-      replies: c.replies?.length ? walk(c.replies) : undefined,
-    }));
+  const nameAt = (n: number) =>
+    n < NAMES.length ? NAMES[n] : NAMES[n % NAMES.length] + ' ' + (Math.floor(n / NAMES.length) + 1);
+  // rootName 只在根楼的楼中楼里传递：标了 sameAsRoot 的楼层沿用根楼化名（楼主本人回来回复）
+  const walk = (items: MuseumComment[], rootName?: string): MuseumComment[] =>
+    items.map((c) => {
+      const own = nameAt(i++);
+      const name = c.sameAsRoot && rootName ? rootName : own;
+      return {
+        ...c,
+        name,
+        replies: c.replies?.length ? walk(c.replies, rootName ?? own) : undefined,
+      };
+    });
   return walk(list);
 }
 
