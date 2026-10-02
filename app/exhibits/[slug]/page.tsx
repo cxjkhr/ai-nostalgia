@@ -17,7 +17,7 @@ const ask:Record<Skin,(name:string,id:string)=>string>={'2022':n=>n,'2023':n=>'/
 export default async function Exhibit({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;const index=events.findIndex(e=>e.id===slug);if(index<0)notFound();
  const event=events[index],previous=events[index-1],next=events[index+1];const category=categories.find(c=>c.id===event.category)!;
- const skin=skinOf(event.year),yearEvents=eventsInYear(event.year),thread=comments[event.id]??[];
+ const skin=skinOf(event.year),yearEvents=eventsInYear(event.year),thread=comments[event.id]??[],works=showcases[event.id]??[];
  const back='/year/'+event.year+'#e-'+event.id;
  return <><VersionBar year={event.year}/><main className={'detail skin s'+skin}><div className="dx-app">
  <aside className="dx-side" aria-label={event.year+' 年展品'}><p className="dx-side-head">{event.year} · {skinInfo[skin].label}</p><ol>{yearEvents.map(x=><li key={x.id}><a href={'/exhibits/'+x.id} aria-current={x.id===event.id?'page':undefined}>{x.name}</a></li>)}</ol><a className="dx-side-back" href={back}>← 回到 {event.year} 年的界面</a></aside>
@@ -27,8 +27,8 @@ export default async function Exhibit({params}:{params:Promise<{slug:string}>}){
  <div className="dx-a"><span className="dx-av bot" aria-hidden="true">{skin==='2023'?'档':'✳'}</span><div className="dx-a-body">
   {skin==='2025'&&<details className="s25-think" open><summary>已思考片刻</summary><p>{thinking(event)}</p></details>}
   <p className="dx-lead">{event.line}</p><p className="dx-detail">{event.detail}</p>
+  {works.length?<ExhibitShowcase works={works}/>:null}
   <figure className="dx-figure"><div className="dx-media"><ExhibitVisual key={event.id} event={event} expanded/></div><figcaption>{event.image?.note??(event.visual==='chat'?'界面意象重构 · 预设演示对话，非历史原始记录':'暂无可考的原始图片 · 文字档案')}</figcaption></figure>
-  {showcases[event.id]?.length?<ExhibitShowcase works={showcases[event.id]}/>:null}
   <p className="dx-sources"><span>资料来源</span><a href={event.source} target="_blank" rel="noreferrer">原始发布资料 ↗</a>{event.image?.sourceUrl&&<a href={event.image.sourceUrl} target="_blank" rel="noreferrer">原始图片 ↗</a>}<a href={back}>回到 {event.year} 年的界面 →</a></p>
  </div></div>
  <nav className="dx-pager" aria-label="按时间浏览相邻展品">{previous?<a rel="prev" href={'/exhibits/'+previous.id}><span>← Previous</span><strong>{previous.name}</strong></a>:<div className="dx-edge"><span>START OF THE COLLECTION</span><strong>这是第一件展品</strong></div>}<p className="dx-count">{index+1} / {events.length}<small>按时间顺序</small></p>{next?<a rel="next" href={'/exhibits/'+next.id}><span>Next →</span><strong>{next.name}</strong></a>:<a href="/exhibits"><span>已到最后一件</span><strong>返回全部展品 →</strong></a>}</nav>

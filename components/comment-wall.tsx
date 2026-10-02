@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { comments, realSources, countComments, type MuseumComment } from '@/lib/comments';
 
 // 楼层化名池：渲染时按 深度优先（主楼→楼中楼→下一主楼）顺序自动分配。
@@ -33,7 +33,17 @@ function withFloorNames(list: MuseumComment[]): MuseumComment[] {
   return walk(list);
 }
 
+const THREAD_PREVIEW_COUNT = 3;
+const REPLY_PREVIEW_COUNT = 3;
+
 function CommentItem({ c }: { c: MuseumComment }) {
+  const [expanded, setExpanded] = useState(false);
+  const replyId = useId();
+  const replies = c.replies ?? [];
+  const hasHiddenReplies = replies.length > REPLY_PREVIEW_COUNT;
+  const visibleReplies = !hasHiddenReplies || expanded
+    ? replies
+    : [...replies.slice(0, REPLY_PREVIEW_COUNT - 1), replies[replies.length - 1]];
   return (
     <li className="comment-item">
       <span className="comment-avatar" aria-hidden="true">
@@ -46,11 +56,12 @@ function CommentItem({ c }: { c: MuseumComment }) {
         </div>
         <p>{c.text}</p>
         {c.sourceUrl&&<a className="comment-origin" href={c.sourceUrl} target="_blank" rel="noreferrer">原始留言 ↗</a>}
-        {c.replies?.length ? (
-          <ul className="comment-sublist">
-            {c.replies.map((r, i) => (
+        {replies.length ? (
+          <ul className="comment-sublist" id={replyId}>
+            {visibleReplies.map((r, i) => (
               <CommentItem key={r.date + r.name + i} c={r} />
             ))}
+            {hasHiddenReplies&&<li className="comment-replies-more"><button type="button" aria-expanded={expanded} aria-controls={replyId} onClick={()=>setExpanded(value=>!value)}>{expanded?'收起中间回复':'展开中间 '+(replies.length-REPLY_PREVIEW_COUNT)+' 条回复'}</button></li>}
           </ul>
         ) : null}
       </div>
@@ -67,6 +78,7 @@ export default function CommentWall({ eventId }: { eventId: string }) {
   const raw = comments[eventId] ?? [];
   const list = raw.length ? withFloorNames(raw) : [];
   const [sort, setSort] = useState<'floor' | 'hot' | 'new'>('floor');
+  const [expanded, setExpanded] = useState(false);
   if (!list.length) return null;
   const sorted =
     sort === 'floor'
@@ -75,6 +87,9 @@ export default function CommentWall({ eventId }: { eventId: string }) {
           sort === 'hot' ? b.likes - a.likes : b.date.localeCompare(a.date)
         );
   const source = realSources[eventId];
+  const hasHiddenThreads = sorted.length > THREAD_PREVIEW_COUNT;
+  const visible = hasHiddenThreads&&!expanded ? sorted.slice(0,THREAD_PREVIEW_COUNT) : sorted;
+  const listId = 'comments-' + eventId;
   return (
     <div className="comment-wall">
       <div className="comment-toolbar">
@@ -91,11 +106,12 @@ export default function CommentWall({ eventId }: { eventId: string }) {
         </div>
         <span className="comment-count">{list.length} 个讨论 · {countComments(list)} 条留言</span>
       </div>
-      <ul className="comment-list">
-        {sorted.map((c, i) => (
+      <ul className="comment-list" id={listId}>
+        {visible.map((c, i) => (
           <CommentItem key={c.date + c.name + i} c={c} />
         ))}
       </ul>
+      {hasHiddenThreads&&<button type="button" className="comment-more" aria-expanded={expanded} aria-controls={listId} onClick={()=>setExpanded(value=>!value)}>{expanded?'收起其余讨论':'展开其余 '+(sorted.length-THREAD_PREVIEW_COUNT)+' 个讨论'}</button>}
       {source && (
         <p className="comment-source">
           留言摘编自B站公开视频热评（已匿名化、有删节）：

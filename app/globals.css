@@ -289,6 +289,12 @@ html:active-view-transition-type(detail)::view-transition-new(root){animation:vt
 .comment-sublist .comment-main p{font-size:13px;line-height:1.7}
 .comment-sublist .comment-likes{font-size:11px}
 .comment-sublist .comment-sublist{margin-left:0;padding-left:10px}
+.comment-more,.comment-replies-more button{border:1px solid var(--sk-line);border-radius:var(--sk-radius);background:var(--sk-panel);color:var(--sk-link);cursor:pointer;font:14px var(--font-sans);transition:border-color .2s,background .2s}
+.comment-more{display:block;width:100%;margin:16px 0 0;padding:11px 16px}
+.comment-replies-more{list-style:none;padding:8px 0}
+.comment-replies-more button{padding:7px 11px;font-size:12px}
+.comment-more:hover,.comment-replies-more button:hover{border-color:var(--sk-link);background:var(--sk-hover)}
+.comment-more:focus-visible,.comment-replies-more button:focus-visible{outline:3px solid var(--sk-link);outline-offset:3px}
 
 /* 2022 对话框演示（ChatGPT 展品） */
 .chat-demo{width:100%;overflow:hidden;background:#33343d;color:#ececf1;border-radius:6px;font:14px/1.7 var(--font-sans);text-align:left}
