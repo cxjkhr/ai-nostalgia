@@ -1,6 +1,6 @@
 # AI Museum · AI 怀旧服
 
-交互式视觉 demo：2022—2026 连续时间线、顶部年份锚点跳转、随滚动更新的年份高亮、档案详情、预设聊天示例。共收录 80 个标志性节点（2022 至 2026 年 9 月）；每年主展品置顶打头，其余事件按日期排列，重要事件用大卡片、次要事件用紧凑单行分层呈现。
+交互式视觉 demo：2022—2026 连续时间线、顶部年份锚点跳转、随滚动更新的年份高亮、档案详情、预设聊天示例。共收录 81 个标志性节点（2022 至 2026 年 9 月）；每年主展品置顶打头，其余事件按日期排列，重要事件用大卡片、次要事件用紧凑单行分层呈现。
 
 首页是开屏选服，每个版本（年份）独立成页、按那一年的 AI 界面换皮（2022 研究预览 / 2023 社区频道 / 2024 多模态 / 2025 深度思考 / 2026 手绘动画，只取界面气质，不复刻具体产品），博物馆式信息架构：
 - 开屏选服：五个版本并排，每块是那一年界面的缩影，点击进入 /year/2022 等年份页（2022 由 ChatGPT 打头、2026 由 GPT-6 Astra 打头）；年份页顶栏配色跟随当年，页底可换到相邻版本。旧的 /#year-2023 链接会自动跳到对应年份页。
@@ -30,8 +30,6 @@ public/midjourney-beta.jpg 为 2022 年 11 月 Midjourney 用户生成图「恐�
 https://commons.wikimedia.org/wiki/File:Palace_during_a_reign_of_terror_Midjourney.png
 public/character-ai.png 为 character.ai 与“维特根斯坦”角色对话的界面截图（2023-07），上传者标注为公有领域：
 https://commons.wikimedia.org/wiki/File:Wittgenstein_dialogue_at_character.ai.png
-public/lensa.jpg 为 Lensa 魔法头像包（Pack #1: Iridescent）应用截图，图片检索标注来源为 Polygon 对头像热潮的报道（2022-12-20）；原图页面为 JS 渲染，未能直接复核，验收时请留意：
-https://www.polygon.com/23513386/ai-art-lensa-magic-avatars-artificial-intelligence-explained-stable-diffusion
 public/altman-saga.jpg 为 Sam Altman 与 Ilya Sutskever 2023-06-05 在特拉维夫大学的合影，Eladkarmel 摄，CC BY-SA 4.0（风波两位主角在事发前数月的同框）：
 https://commons.wikimedia.org/wiki/File:Ilya_Sutskever_and_Sam_Altman_in_TAU.jpg
 public/sora.jpg 为 Sora 官方演示视频「东京漫步」的 Commons 收录版截帧（视频上传者标注为 Sora / OpenAI、公有领域），取自视频缩略帧：
@@ -79,6 +77,8 @@ public/flux.jpg 为 Black Forest Labs 官方仓库 README 的样图网格（grid
 https://github.com/black-forest-labs/flux
 
 ## 事件来源
+- https://www.anthropic.com/news/model-context-protocol
+- https://www.nbd.com.cn/articles/2023-05-09/2814454.html
 - https://openai.com/index/chatgpt/
 - https://stability.ai/news-updates/stable-diffusion-public-release
 - https://openai.com/index/gpt-4-research/

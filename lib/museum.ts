@@ -181,29 +181,7 @@ export const events: TimelineEvent[] = (
       tier: 'major',
       visual: 'chat',
     },
-    {
-      id: 'lensa',
-      year: '2022',
-      date: '2022-12-01',
-      name: 'Lensa AI 头像狂潮',
-      tag: '头像热潮',
-      line: '第一次，大家排队让 AI 画自己。',
-      detail:
-        'Prisma 的 Lensa 掀起 AI 头像风潮，也带来第一批“我上传的照片去了哪”的隐私讨论。',
-      source: 'https://techcrunch.com/2022/12/05/lensa-ai-app-store-magic-avatars-artists/',
-      category: 'images',
-      tier: 'minor',
-      visual: 'image',
-      image: {
-        src: '/lensa.jpg',
-        width: 750,
-        height: 1297,
-        alt: 'Lensa 应用中的魔法头像包截图：六张虹彩风格生成肖像',
-        note: 'Iridescent 头像包 · Lensa 生成结果',
-        sourceUrl:
-          'https://www.polygon.com/23513386/ai-art-lensa-magic-avatars-artificial-intelligence-explained-stable-diffusion',
-      },
-    },
+
     {
       id: 'chatgpt-1m',
       year: '2022',
@@ -299,12 +277,12 @@ export const events: TimelineEvent[] = (
       date: '2023-02-07',
       name: 'New Bing 发布',
       tag: '搜索宣战',
-      line: '谷歌连夜开发布会，微软开了一场得意的。',
+      line: '谷歌连夜开发布会救场，微软这场开得扬眉吐气。',
       detail:
         '微软把新一代模型装进 Bing 与 Edge，搜索引擎大战重新开打，“AI 会杀死搜索”第一次成为严肃话题。',
       source: 'https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/',
       category: 'agents',
-      tier: 'minor',
+      tier: 'major',
       visual: 'image',
       image: {
         src: '/new-bing.png',
@@ -469,6 +447,19 @@ export const events: TimelineEvent[] = (
         note: 'Significant-Gravitas/AutoGPT · 官方仓库卡',
         sourceUrl: 'https://github.com/Significant-Gravitas/AutoGPT',
       },
+    },
+    {
+      id: 'ai-sunyanzi',
+      year: '2023',
+      date: '2023-05-09',
+      name: 'AI 孙燕姿刷屏',
+      tag: '克隆的歌喉',
+      line: '冷门歌手孙燕姿，热门歌手 AI 孙燕姿。',
+      detail:
+        '网友用开源换声模型克隆孙燕姿的声线，AI 翻唱《发如雪》在 B 站播放破百万，相关视频数以千计；她本人回应「你并不特别，不幸的是你也是可定制的」。声音克隆第一次以大众娱乐的方式出圈，相关视频后来陆续下架。',
+      source: 'https://www.nbd.com.cn/articles/2023-05-09/2814454.html',
+      category: 'audio',
+      tier: 'minor',
     },
     {
       id: 'nvidia-1t',
@@ -1080,6 +1071,19 @@ export const events: TimelineEvent[] = (
         note: '搜索界面实录 · 报道截图',
         sourceUrl: 'https://openai.com/index/introducing-chatgpt-search/',
       },
+    },
+    {
+      id: 'mcp',
+      year: '2024',
+      date: '2024-11-25',
+      name: 'MCP 开放',
+      tag: '万能转接头',
+      line: '给所有 AI 发了一根 USB-C。',
+      detail:
+        'Anthropic 开源 Model Context Protocol：模型不再各接各的插头，文件、工具、数据库都走同一个协议。OpenAI、Google 等在随后一年相继采纳，它成了智能体接工具的事实标准，被称作「AI 界的 USB-C」。',
+      source: 'https://www.anthropic.com/news/model-context-protocol',
+      category: 'agents',
+      tier: 'major',
     },
     {
       id: 'openai-12days',
