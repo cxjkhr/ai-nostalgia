@@ -427,6 +427,19 @@ export const events: TimelineEvent[] = (
       },
     },
     {
+      id: 'will-smith-spaghetti',
+      year: '2023',
+      date: '2023-03-27',
+      name: '史密斯嗦面',
+      tag: '嗦面基准',
+      line: '面条一会儿进嘴一会儿出嘴，叉子和手长在了一起。',
+      detail:
+        'Reddit 网友用开源的 ModelScope 文生视频模型，配一句“Will Smith eating spaghetti”生成短片并慢放发出，画面扭曲却一眼能认。此后每出一个视频模型，大家都先让它嗦一碗面，这碗面成了丈量 AI 视频进步的非正式基准。',
+      source: 'https://www.reddit.com/r/StableDiffusion/comments/1244h2c/will_smith_eating_spaghetti/',
+      category: 'video',
+      tier: 'minor',
+    },
+    {
       id: 'autogpt',
       year: '2023',
       date: '2023-03-30',
