@@ -1,8 +1,8 @@
 // 开场动画的配乐：全部用 Web Audio 现场合成，没有任何音频文件。
 // 一首 62 秒、120 BPM 的小曲，同一段旋律按年份换编制：
-// 2022 芯片方波 → 2023 加上鼓和贝斯 → 2024 铺底和弦随节拍呼吸 → 2025 半速、琶音像在"想" → 2026 全编制，黑色星期四断一拍 → 结尾回到主和弦。
+// 2022 芯片方波 → 2023 加上鼓和贝斯 → 2024 铺底和弦随节拍呼吸 → 2025 半速、琶音像在"想" → 2026 先只有铅笔声和铺底（在起稿），画好的机器人一"活过来"全编制进场 → 结尾回到主和弦。
 // 同一份事件表既给页面实时播放，也能交给 OfflineAudioContext 离线渲染（导出视频用）。
-import {BAR, BEAT, OUTAGE, sketchAt, typeCues, type TypeCue} from './intro-timeline';
+import {ALIVE, BAR, BEAT, sketchAt, typeCues, type TypeCue} from './intro-timeline';
 
 type Bus = {ctx: BaseAudioContext; dry: AudioNode; wet: AudioNode};
 type Ev = {t: number; play: (bus: Bus, at: number) => void};
@@ -134,23 +134,6 @@ function pencil(bus: Bus, at: number) {
   s.start(at, Math.random());
   s.stop(at + 0.4);
 }
-// 断电：音高一路往下掉
-function powerDown(bus: Bus, at: number) {
-  const {ctx} = bus;
-  const osc = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
-  osc.type = 'sawtooth';
-  osc.frequency.setValueAtTime(330, at);
-  osc.frequency.exponentialRampToValueAtTime(28, at + 0.7);
-  f.type = 'lowpass';
-  f.frequency.value = 1200;
-  osc.connect(f).connect(g);
-  env(g, at, 0.12, 0.005, 0.2, 0.5);
-  out(bus, g);
-  osc.start(at);
-  osc.stop(at + 0.8);
-  for (let i = 0; i < 5; i++) noiseHit(bus, at + 0.08 + i * 0.13 + Math.random() * 0.05, 0.05, 0.03, 'highpass', 3000);
-}
-
 // ── 曲谱 ──
 const CH: Record<string, {n: number[]; b: number}> = {
   F: {n: [53, 57, 60], b: 41},
@@ -225,8 +208,14 @@ export function buildScore(cues: TypeCue[] = typeCues): Ev[] {
         for (let k = 0; k < 8; k++) at(beat(bar, k * 0.5), (bus, t) => noiseHit(bus, t, 0.02, 0.012, 'highpass', 9000));
         if (i >= 2) for (const [b, m] of mel) at(beat(bar, b), (bus, t) => bell(bus, t, m + 12, 0.04));
         for (const b of [0, 2]) at(beat(bar, b), (bus, t) => tone(bus, t, ch.b, BEAT * 1.8, {type: 'sine', gain: 0.14}));
+      } else if (i < 2) {
+        // 2026 前两小节：还在起稿，只有铺底、低音和轻轻的拍子
+        at(t0, (bus, t) => pad(bus, t, ch.n.map(n => n + 12), BAR * 0.95, 0.035, 0.3, 0.7, 1600));
+        for (const b of [0, 2]) at(beat(bar, b), (bus, t) => tone(bus, t, ch.b, BEAT * 1.8, {type: 'sine', gain: 0.09}));
+        for (let b = 0; b < 4; b++) at(beat(bar, b + 0.5), (bus, t) => hat(bus, t, 0.016));
+        for (const [b, m] of mel) at(beat(bar, b), (bus, t) => bell(bus, t, m + 12, 0.03));
       } else {
-        // 2026：全编制
+        // 2026：机器人活过来，全编制
         for (let b = 0; b < 4; b++) {
           at(beat(bar, b), (bus, t) => (b % 2 ? snare(bus, t, 0.15) : kick(bus, t, 0.5)));
           if (b === 2) at(beat(bar, 2.5), (bus, t) => kick(bus, t, 0.35));
@@ -234,15 +223,23 @@ export function buildScore(cues: TypeCue[] = typeCues): Ev[] {
           at(beat(bar, b + 0.5), (bus, t) => hat(bus, t, 0.03, true));
           for (const h of [0, 0.5]) at(beat(bar, b + h), (bus, t) => tone(bus, t, ch.b + (h ? 12 : 0), BEAT * 0.45, {type: 'sawtooth', gain: 0.07, cut: 800}));
         }
-        at(t0, (bus, t) => pad(bus, t, ch.n.map(n => n + 12), BAR * 0.95, 0.035, 0.2, 0.6, 2000));
+        at(t0, (bus, t) => pad(bus, t, ch.n.map(n => n + 12), BAR * 0.95, 0.04, 0.2, 0.6, 2000));
+        for (const b of [0, 2]) at(beat(bar, b), (bus, t) => tone(bus, t, ch.b, BEAT * 1.8, {type: 'sine', gain: 0.14}));
         for (const [b, m, d] of mel) at(beat(bar, b), (bus, t) => {
-          tone(bus, t, m, d * BEAT * 0.9, {gain: 0.04, cut: 3200, wet: 0.25});
+          tone(bus, t, m, d * BEAT * 0.9, {gain: 0.045, cut: 3200, wet: 0.25});
           bell(bus, t, m + 12, 0.03);
         });
         if (i === 4) for (let k = 0; k < 8; k++) at(beat(bar, 2 + k * 0.25), (bus, t) => snare(bus, t, 0.05 + k * 0.015));
       }
     }
   }
+
+  // 出图、视频生成完的"叮"
+  for (const t0 of [19, 31.6]) for (const [k, m] of [84, 91].entries()) at(t0 + k * 0.09, (bus, t) => bell(bus, t, m, 0.045));
+  // 活过来的那一下：前一拍的小军鼓滚奏，落地一声镲，钟琴往上刷一串
+  for (let k = 0; k < 4; k++) at(ALIVE - BEAT + k * 0.125, (bus, t) => snare(bus, t, 0.04 + k * 0.02));
+  at(ALIVE, (bus, t) => crash(bus, t, 0.09));
+  for (const [k, m] of [72, 76, 79, 84, 88, 91].entries()) at(ALIVE + k * 0.06, (bus, t) => bell(bus, t, m, 0.035));
 
   // 结尾：F → G → C，钟琴往上走一串，留一个长尾巴
   at(54, (bus, t) => crash(bus, t, 0.08));
@@ -266,11 +263,7 @@ export function buildScore(cues: TypeCue[] = typeCues): Ev[] {
   });
   for (const s of sketchAt) at(s, (bus, t) => pencil(bus, t));
 
-  // 黑色星期四：这一拍里的音全部不出声，只剩断电声
-  const kept = ev.filter(e => e.t < OUTAGE[0] || e.t >= OUTAGE[1]);
-  kept.push({t: OUTAGE[0], play: (bus, t) => powerDown(bus, t)});
-  kept.push({t: OUTAGE[1], play: (bus, t) => crash(bus, t, 0.09)});
-  return kept.sort((a, b) => a.t - b.t);
+  return ev.sort((a, b) => a.t - b.t);
 }
 
 // 总线：干声 + 混响，压一道限幅
