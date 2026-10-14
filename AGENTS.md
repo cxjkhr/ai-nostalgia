@@ -32,6 +32,7 @@ lib/museum.ts    全站展品的唯一数据源（events: TimelineEvent[]，约 
 lib/comments.ts  「当年评论区」数据（Record<展品id, MuseumComment[]>）
 lib/showcase.ts  详情页展品作品（image / video / audio / interactive），来源和年代逐项留证
 lib/image-thumbnails.json 列表缩略图映射；原图保留，新图无映射时回退原图
+lib/intro-timeline.ts / intro-score.ts / intro-gate.ts  开服动画的时间轴（画面与配乐共用）、Web Audio 合成配乐、head 内联的首访判断；画面在 components/intro-film.tsx，样式在 app/intro.css
 lib/transitions.ts 页面转场脚本（head 内联，配合 globals.css 里的 View Transitions 样式）
 app/             路由：/ 开屏选服；/year/[year] 各年份页；/exhibits 全部展品；/exhibits/[slug] 详情；
                  /collections/[category] 六个分类展区；/history 重定向到 /；not-found 兜底
