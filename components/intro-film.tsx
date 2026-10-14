@@ -1,6 +1,6 @@
 'use client';
 import {useEffect, useRef, useState} from 'react';
-import {BEAT, FILM_LEN, FINALE, filmEras, panels26, plan25, typeCues, typeEnd} from '@/lib/intro-timeline';
+import {BEAT, FILM_LEN, FINALE, answer25, filmEras, panels26, think25, typeCues, typeEnd} from '@/lib/intro-timeline';
 import {buildScore, createBus, schedule} from '@/lib/intro-score';
 
 // 开服动画：一分钟，从 2022 的灰色对话框，一年一年长成 2026 的手绘分镜。每一年只讲一件和那年界面对得上的事。
@@ -316,18 +316,20 @@ export default function IntroFilm() {
             </div>
           </div>
 
-          {/* 2025 · 深度思考：先想，再列计划，一项一项做 */}
+          {/* 2025 · 深度思考：当年难倒 AI 的两道老题，这回先想再答 */}
           <div className="fw fw25" data-at={at(34, 44)}>
             <div className="c25-q" data-at={at(34.3)}><p><T id="q" /></p></div>
-            <div className="c25-think" data-at={at(35.2, 39.2)}>
-              <div className="c25-th-head"><i aria-hidden="true" /><span className="c25-a">思考中… <b data-count="35.2,4,0,4">0</b> 秒</span><span className="c25-b">已深度思考（用时 4 秒）›</span></div>
+            <div className="c25-think" data-at={at(...think25[0])}>
+              <div className="c25-th-head"><i aria-hidden="true" /><span className="c25-a">思考中… <b data-count={`${think25[0][0]},4,0,4`}>0</b> 秒</span><span className="c25-b">已深度思考（用时 4 秒）›</span></div>
               <div className="c25-th-body"><div>{['t1', 't2', 't3', 't4'].map(id => <p key={id}><T id={id} /></p>)}</div></div>
             </div>
-            <ul className="c25-todo">
-              {plan25.map(([t, text], i) => (
-                <li key={text} className={i === plan25.length - 1 ? 'doing' : undefined} data-at={at(t)}><i aria-hidden="true" /><span>{text}</span>{i === plan25.length - 1 && <small>进行中…</small>}</li>
-              ))}
-            </ul>
+            <div className="c25-ans" data-at={at(answer25[0])}><b>9.9 更大。</b><small>这道题，前两年难倒过不少 AI。</small></div>
+            <div className="c25-q" data-at={at(40.7)}><p><T id="q2" /></p></div>
+            <div className="c25-think" data-at={at(...think25[1])}>
+              <div className="c25-th-head"><i aria-hidden="true" /><span className="c25-a">思考中…</span><span className="c25-b">已深度思考（用时 1 秒）›</span></div>
+              <div className="c25-th-body"><div><p><T id="t5" /></p></div></div>
+            </div>
+            <div className="c25-ans" data-at={at(answer25[1])}><b>3 个。</b><small>以前，它常数成 2 个。</small></div>
           </div>
 
           {/* 2026 · 手绘动画：写代码 → 起稿 → 上色 → 活过来 → 配乐 → 正式服 */}

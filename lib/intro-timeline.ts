@@ -2,7 +2,7 @@
 // 节拍 120 BPM，一小节 2 秒；每个年份 5 小节（10 秒），开头 2 小节、结尾 4 小节，共 62 秒。
 // 每一年只讲一件和那年界面气质对得上的事，并把它讲完整：
 // 2022 一个输入框里的第一次对话 → 2023 在频道里念咒画画 → 2024 能听、能看、还能把画面变成视频
-// → 2025 先想再答、列计划一项项做 → 2026 一句话，AI 用代码把动画画出来。
+// → 2025 先想再答：当年难倒 AI 的两道老题 → 2026 一句话，AI 用代码把动画画出来。
 export const BEAT = 0.5;
 export const BAR = 2;
 export const FILM_LEN = 62;
@@ -35,26 +35,22 @@ export const typeCues: TypeCue[] = [
   {id: 'v1', at: 24.9, cps: 10, text: '嘿，你看得见我手里拿的是什么吗？'},
   {id: 'v2', at: 27.6, cps: 11, text: '一杯拿铁，拉花是一片叶子。要我教你怎么拉吗？'},
   {id: 'v3', at: 29.9, cps: 10, text: '那把它变成一段视频吧。'},
-  // 2025
-  {id: 'q', at: 34.5, cps: 12, text: '帮我做一个 AI 怀旧服网站。', tick: 'key'},
-  {id: 't1', at: 35.4, cps: 26, text: '嗯，用户想把这几年的 AI 做成一个怀旧服……'},
-  {id: 't2', at: 36.4, cps: 26, text: '等等，2022 年的界面应该是灰色的对话框，一问一答。'},
-  {id: 't3', at: 37.4, cps: 26, text: '那就一年一个版本，每个版本换成那一年的样子。'},
-  {id: 't4', at: 38.4, cps: 26, text: '先列个计划，一项一项来。'},
+  // 2025：两道当年的"翻车题"，这回先想再答
+  {id: 'q', at: 34.5, cps: 12, text: '9.11 和 9.9，哪个大？', tick: 'key'},
+  {id: 't1', at: 35.4, cps: 24, text: '嗯，用户问 9.11 和 9.9 哪个大。'},
+  {id: 't2', at: 36.3, cps: 24, text: '9.11 的小数位更多，看起来好像更大……'},
+  {id: 't3', at: 37.2, cps: 24, text: '等等，先比十分位：1 比 9 小。'},
+  {id: 't4', at: 38.1, cps: 24, text: '所以应该是 9.9 更大。'},
+  {id: 'q2', at: 40.9, cps: 14, text: '那 strawberry 里有几个 r？', tick: 'key'},
+  {id: 't5', at: 42.3, cps: 30, text: 'st-r-awbe-r-r-y，数一下……'},
   // 2026
   {id: 'code', at: 44.5, cps: 36, text: '<svg viewBox="0 0 120 80">\n  <path d="M44 14h32v32H44z"/>\n  <animate attributeName="d"\n    dur="1s" repeatCount="indefinite"/>', tick: 'soft'},
 ];
 export const typeEnd = (c: TypeCue) => c.at + [...c.text].length / c.cps;
 
-// 2025：思考完以后列出的计划，最后一项做到一半，正好接上 2026
-export const plan25: [number, string][] = [
-  [39.6, '收集这几年的标志性展品'],
-  [40.3, '2022 · 灰色对话框，一问一答'],
-  [41.0, '2023 · 频道里，机器人发公告'],
-  [41.7, '2024 · 渐变、语音、会动的画面'],
-  [42.4, '2025 · 答案之前，先想一想'],
-  [43.1, '2026 · 手绘动画'],
-];
+// 2025：两次思考的起止、两个答案出现的时刻
+export const think25: [number, number][] = [[35.2, 39.2], [42.1, 43.2]];
+export const answer25: [number, number] = [39.5, 43.4];
 // 2026：一格一格的分镜 [出现时刻, 标题, 一句话]
 export const panels26: [number, string, string][] = [
   [44.3, '写代码', '一句话，变成一屏代码'],

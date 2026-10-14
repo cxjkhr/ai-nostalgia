@@ -234,8 +234,8 @@ export function buildScore(cues: TypeCue[] = typeCues): Ev[] {
     }
   }
 
-  // 出图、视频生成完的"叮"
-  for (const t0 of [19, 31.6]) for (const [k, m] of [84, 91].entries()) at(t0 + k * 0.09, (bus, t) => bell(bus, t, m, 0.045));
+  // 出图、视频生成完、想出答案时的"叮"
+  for (const t0 of [19, 31.6, 39.5, 43.4]) for (const [k, m] of [84, 91].entries()) at(t0 + k * 0.09, (bus, t) => bell(bus, t, m, 0.045));
   // 活过来的那一下：前一拍的小军鼓滚奏，落地一声镲，钟琴往上刷一串
   for (let k = 0; k < 4; k++) at(ALIVE - BEAT + k * 0.125, (bus, t) => snare(bus, t, 0.04 + k * 0.02));
   at(ALIVE, (bus, t) => crash(bus, t, 0.09));
